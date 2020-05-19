@@ -1,7 +1,7 @@
 package solution;
 
 import annotations.Problem;
-import dataStructure.ListNode;
+import data_structure.ListNode;
 import enums.QDifficulty;
 import enums.QTag;
 

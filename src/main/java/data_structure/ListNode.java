@@ -1,4 +1,4 @@
-package dataStructure;
+package data_structure;
 
 public class ListNode {
     public int val;
