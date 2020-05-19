@@ -8,7 +8,8 @@ import enums.QTag;
 @Problem(
         title = "Middle of the Linked List",
         difficulty = QDifficulty.EASY,
-        tag = QTag.LINKED_LIST
+        tag = QTag.LINKED_LIST,
+        url = "https://leetcode.com/problems/middle-of-the-linked-list/"
 )
 public class Q876 {
     public ListNode middleNode(ListNode head) {

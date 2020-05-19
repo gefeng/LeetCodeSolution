@@ -11,7 +11,8 @@ import java.util.Set;
 @Problem(
         title = "Groups of Special-Equivalent Strings",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/groups-of-special-equivalent-strings/"
 )
 public class Q893 {
     public int numSpecialEquivGroups(String[] A) {

@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Reverse Words in a String III",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/reverse-words-in-a-string-iii/"
 )
 public class Q557 {
     public String reverseWords(String s) {

@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Longest Common Prefix",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/longest-common-prefix/"
 )
 public class Q14 {
     public String longestCommonPrefix(String[] strs) {

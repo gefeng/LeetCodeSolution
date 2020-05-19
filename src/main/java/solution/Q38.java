@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Count and Say",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/count-and-say/"
 )
 public class Q38 {
     public String countAndSay(int n) {

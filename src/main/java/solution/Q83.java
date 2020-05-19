@@ -8,7 +8,8 @@ import enums.QTag;
 @Problem(
         title = "Remove Duplicates from Sorted List",
         difficulty = QDifficulty.EASY,
-        tag = QTag.LINKED_LIST
+        tag = QTag.LINKED_LIST,
+        url = "https://leetcode.com/problems/remove-duplicates-from-sorted-list/"
 )
 public class Q83 {
     public ListNode deleteDuplicates(ListNode head) {

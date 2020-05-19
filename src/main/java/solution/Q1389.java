@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Create Target Array in the Given Order",
         difficulty = QDifficulty.EASY,
-        tag = QTag.ARRAY
+        tag = QTag.ARRAY,
+        url = "https://leetcode.com/problems/create-target-array-in-the-given-order/"
 )
 public class Q1389 {
     public int[] createTargetArray(int[] nums, int[] index) {

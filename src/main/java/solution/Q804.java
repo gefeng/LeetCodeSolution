@@ -10,7 +10,8 @@ import java.util.Set;
 @Problem(
         title = "Unique Morse Code Words",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/unique-morse-code-words/"
 )
 public class Q804 {
     public int uniqueMorseRepresentations(String[] words) {

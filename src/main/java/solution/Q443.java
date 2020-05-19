@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "String Compression",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/string-compression/"
 )
 public class Q443 {
     public int compress(char[] chars) {

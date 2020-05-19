@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Maximum Subarray",
         difficulty = QDifficulty.EASY,
-        tag = QTag.ARRAY
+        tag = QTag.ARRAY,
+        url = "https://leetcode.com/problems/maximum-subarray/"
 )
 public class Q53 {
     public int maxSubArray(int[] nums) {

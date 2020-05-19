@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Search Insert Position",
         difficulty = QDifficulty.EASY,
-        tag = QTag.ARRAY
+        tag = QTag.ARRAY,
+        url = "https://leetcode.com/problems/search-insert-position/"
 )
 public class Q35 {
     public int searchInsert(int[] nums, int target) {

@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Implement strStr()",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/implement-strstr/"
 )
 public class Q28 {
     public int strStr(String haystack, String needle) {

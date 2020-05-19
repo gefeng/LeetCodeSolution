@@ -14,7 +14,8 @@ import enums.QTag;
 @Problem(
         title = "Intersection of Two Linked Lists",
         difficulty = QDifficulty.EASY,
-        tag = QTag.LINKED_LIST
+        tag = QTag.LINKED_LIST,
+        url = "https://leetcode.com/problems/intersection-of-two-linked-lists/"
 )
 public class Q160 {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {

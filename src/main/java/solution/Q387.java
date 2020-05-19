@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "First Unique Character in a String",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/first-unique-character-in-a-string/"
 )
 public class Q387 {
     public int firstUniqChar(String s) {

@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Add Strings",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/add-strings/"
 )
 public class Q415 {
     public String addStrings(String num1, String num2) {

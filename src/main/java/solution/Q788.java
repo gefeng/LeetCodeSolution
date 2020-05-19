@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Rotated Digits",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/rotated-digits/"
 )
 public class Q788 {
     public int rotatedDigits(int N) {

@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Decompress Run-Length Encoded List",
         difficulty = QDifficulty.EASY,
-        tag = QTag.ARRAY
+        tag = QTag.ARRAY,
+        url = "https://leetcode.com/problems/decompress-run-length-encoded-list/"
 )
 public class Q1313 {
     public int[] decompressRLElist(int[] nums) {

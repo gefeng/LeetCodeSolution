@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Remove Element",
         difficulty = QDifficulty.EASY,
-        tag = QTag.ARRAY
+        tag = QTag.ARRAY,
+        url = "https://leetcode.com/problems/remove-element/"
 )
 public class Q27 {
     public int removeElement(int[] nums, int val) {

@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Count Binary Substrings",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/count-binary-substrings/"
 )
 public class Q696 {
     public int countBinarySubstrings(String s) {

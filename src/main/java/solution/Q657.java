@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Robot Return to Origin",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/robot-return-to-origin/"
 )
 public class Q657 {
     public boolean judgeCircle(String moves) {

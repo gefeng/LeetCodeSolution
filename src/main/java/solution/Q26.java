@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Remove Duplicates from Sorted Array",
         difficulty = QDifficulty.EASY,
-        tag = QTag.ARRAY
+        tag = QTag.ARRAY,
+        url = "https://leetcode.com/problems/remove-duplicates-from-sorted-array/"
 )
 public class Q26 {
     public int removeDuplicates(int[] nums) {

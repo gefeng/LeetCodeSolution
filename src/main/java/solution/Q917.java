@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Reverse Only Letters",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/reverse-only-letters/"
 )
 public class Q917 {
     public String reverseOnlyLetters(String S) {

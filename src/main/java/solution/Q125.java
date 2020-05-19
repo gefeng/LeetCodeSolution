@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Valid Palindrome",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/valid-palindrome/"
 )
 public class Q125 {
     public boolean isPalindrome(String s) {

@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "How Many Numbers Are Smaller Than the Current Number",
         difficulty = QDifficulty.EASY,
-        tag = QTag.ARRAY
+        tag = QTag.ARRAY,
+        url = "https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/"
 )
 public class Q1365 {
     public int[] smallerNumbersThanCurrent(int[] nums) {

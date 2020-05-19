@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Find Numbers with Even Number of Digits",
         difficulty = QDifficulty.EASY,
-        tag = QTag.ARRAY
+        tag = QTag.ARRAY,
+        url = "https://leetcode.com/problems/find-numbers-with-even-number-of-digits/"
 )
 public class Q1295 {
     public int findNumbers(int[] nums) {

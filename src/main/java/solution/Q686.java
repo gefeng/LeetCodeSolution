@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Repeated String Match",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/repeated-string-match/"
 )
 public class Q686 {
     public int repeatedStringMatch(String A, String B) {

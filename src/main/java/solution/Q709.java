@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "To Lower Case",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/to-lower-case/"
 )
 public class Q709 {
     public String toLowerCase(String str) {

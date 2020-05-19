@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Number of Segments in a String",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/number-of-segments-in-a-string/"
 )
 public class Q434 {
     public int countSegments(String s) {

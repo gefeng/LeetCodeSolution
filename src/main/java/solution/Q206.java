@@ -8,7 +8,8 @@ import enums.QTag;
 @Problem(
         title = "Reverse Linked List",
         difficulty = QDifficulty.EASY,
-        tag = QTag.LINKED_LIST
+        tag = QTag.LINKED_LIST,
+        url = "https://leetcode.com/problems/reverse-linked-list/"
 )
 public class Q206 {
     public ListNode reverseList(ListNode head) {

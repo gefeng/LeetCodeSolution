@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Fibonacci Number",
         difficulty = QDifficulty.EASY,
-        tag = QTag.ARRAY
+        tag = QTag.ARRAY,
+        url = "https://leetcode.com/problems/fibonacci-number/"
 )
 public class Q509 {
     public int fibIterative(int N) {

@@ -9,7 +9,8 @@ import java.util.HashSet;
 @Problem(
         title = "Reverse Vowels of a String",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/reverse-vowels-of-a-string/"
 )
 public class Q345 {
     public String reverseVowels(String s) {

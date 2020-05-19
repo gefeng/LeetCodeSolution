@@ -8,7 +8,8 @@ import enums.QTag;
 @Problem(
         title = "Linked List Cycle",
         difficulty = QDifficulty.EASY,
-        tag = QTag.LINKED_LIST
+        tag = QTag.LINKED_LIST,
+        url = "https://leetcode.com/problems/linked-list-cycle/"
 )
 public class Q141 {
     public boolean hasCycle(ListNode head) {

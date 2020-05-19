@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Ransom Note",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/ransom-note/"
 )
 public class Q383 {
     public boolean canConstruct(String ransomNote, String magazine) {

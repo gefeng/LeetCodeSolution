@@ -10,7 +10,8 @@ import java.util.Stack;
 @Problem(
         title = "Valid Parentheses",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/valid-parentheses/"
 )
 public class Q20 {
     public boolean isValid(String s) {

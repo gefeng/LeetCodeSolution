@@ -10,7 +10,8 @@ import java.util.Stack;
 @Problem(
         title = "Palindrome Linked List",
         difficulty = QDifficulty.EASY,
-        tag = QTag.LINKED_LIST
+        tag = QTag.LINKED_LIST,
+        url = "https://leetcode.com/problems/palindrome-linked-list/"
 )
 public class Q234 {
     public boolean isPalindrome(ListNode head) {

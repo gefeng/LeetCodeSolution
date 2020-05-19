@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Add Binary",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/add-binary/"
 )
 public class Q67 {
     public String addBinary(String a, String b) {

@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Roman to Integer",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/roman-to-integer/"
 )
 public class Q13 {
     public int romanToInt(String s) {

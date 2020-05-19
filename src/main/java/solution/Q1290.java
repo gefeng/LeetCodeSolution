@@ -8,7 +8,8 @@ import enums.QTag;
 @Problem(
         title = "Convert Binary Number in a Linked List to Integer",
         difficulty = QDifficulty.EASY,
-        tag = QTag.LINKED_LIST
+        tag = QTag.LINKED_LIST,
+        url = "https://leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer/"
 )
 public class Q1290 {
     public int getDecimalValue(ListNode head) {

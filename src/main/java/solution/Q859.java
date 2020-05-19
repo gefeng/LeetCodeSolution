@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Buddy Strings",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/buddy-strings/"
 )
 public class Q859 {
     public boolean buddyStrings(String A, String B) {

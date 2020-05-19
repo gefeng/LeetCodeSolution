@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Detect Capital",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/detect-capital/"
 )
 public class Q520 {
     public boolean detectCapitalUse(String word) {

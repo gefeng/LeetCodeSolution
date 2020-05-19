@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Student Attendance Record I",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/student-attendance-record-i/"
 )
 public class Q551 {
     public boolean checkRecord(String s) {

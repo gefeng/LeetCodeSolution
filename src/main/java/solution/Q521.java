@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Longest Uncommon Subsequence I",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/longest-uncommon-subsequence-i/"
 )
 public class Q521 {
     public int findLUSlength(String a, String b) {

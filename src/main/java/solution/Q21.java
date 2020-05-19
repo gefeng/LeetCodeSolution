@@ -8,7 +8,8 @@ import enums.QTag;
 @Problem(
         title = "Merge Two Sorted Lists",
         difficulty = QDifficulty.EASY,
-        tag = QTag.LINKED_LIST
+        tag = QTag.LINKED_LIST,
+        url = "https://leetcode.com/problems/merge-two-sorted-lists/"
 )
 public class Q21 {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {

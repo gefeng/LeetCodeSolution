@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Merge Sorted Array",
         difficulty = QDifficulty.EASY,
-        tag = QTag.ARRAY
+        tag = QTag.ARRAY,
+        url = "https://leetcode.com/problems/merge-sorted-array/"
 )
 public class Q88 {
     public void merge(int[] nums1, int m, int[] nums2, int n) {

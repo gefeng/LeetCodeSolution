@@ -10,7 +10,8 @@ import java.util.HashSet;
 @Problem(
         title = "Most Common Word",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/most-common-word/"
 )
 public class Q819 {
     public String mostCommonWord(String paragraph, String[] banned) {

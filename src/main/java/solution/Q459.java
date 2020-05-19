@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Repeated Substring Pattern",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/repeated-substring-pattern/"
 )
 public class Q459 {
     public boolean repeatedSubstringPattern(String s) {

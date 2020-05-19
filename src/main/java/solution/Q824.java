@@ -10,7 +10,8 @@ import java.util.Set;
 @Problem(
         title = "Goat",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/goat-latin"
 )
 public class Q824 {
     public String toGoatLatin(String S) {

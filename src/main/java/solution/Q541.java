@@ -7,7 +7,8 @@ import enums.QTag;
 @Problem(
         title = "Reverse String II",
         difficulty = QDifficulty.EASY,
-        tag = QTag.STRING
+        tag = QTag.STRING,
+        url = "https://leetcode.com/problems/reverse-string-ii/"
 )
 public class Q541 {
     public String reverseStr(String s, int k) {
