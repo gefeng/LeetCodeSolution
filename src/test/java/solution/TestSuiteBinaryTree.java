@@ -83,4 +83,18 @@ public class TestSuiteBinaryTree {
         output = new Q104().maxDepthIterative(root);
         assertEquals(expected, output);
     }
+
+    @Test
+    public void hasPathSum() {
+        TreeNode root = BinaryTree.createBinaryTree();
+        assertTrue(new Q112().hasPathSumIterative(root, 8));
+    }
+
+    @Test
+    public void findUnivalSubtreesTest() {
+        TreeNode root = new TreeNode(1);
+        root.right = new TreeNode(2);
+        int expected = 1;
+        assertEquals(expected, new Q250().countUnivalSubtrees(root));
+    }
 }
