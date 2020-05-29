@@ -96,4 +96,28 @@ public class TestSuiteBinaryTree {
         int expected = 1;
         assertEquals(expected, new Q250().countUnivalSubtrees(root));
     }
+
+    @Test
+    public void lowestCommonAncestorTest() {
+        TreeNode root = BinaryTree.createBinaryTree();
+        new Q236().lowestCommonAncestor(root, root.left, root.right);
+    }
+
+    @Test
+    public void serializeAndDeserializeBinaryTreeTest() {
+//        TreeNode root = BinaryTree.createBinaryTree();
+//        String expected = "[1,2,3,4,5]";
+        TreeNode root = new TreeNode(5);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.right.left = new TreeNode(2);
+        root.right.right = new TreeNode(4);
+        root.right.left.left = new TreeNode(3);
+        root.right.left.right = new TreeNode(1);
+        //String expected = "[5,2,3,null,null,2,4,3,1]";
+        //assertEquals(expected, new Q297().serializeDFS(root));
+        System.out.println(new Q297().serializeDFS(root));
+
+        //new Q297().deserialize("[5,2,3,null,null,2,4,3,1]");
+    }
 }
