@@ -120,4 +120,13 @@ public class TestSuiteBinaryTree {
 
         //new Q297().deserialize("[5,2,3,null,null,2,4,3,1]");
     }
+
+    @Test
+    public void Q199Test() {
+        TreeNode root = BinaryTree.createBinaryTree();
+        int[] expected = {1, 3, 5};
+        List<Integer> output = new Q199().rightSideViewBFS(root);
+        for(int i = 0; i < expected.length; i++)
+            assertEquals(expected[i], output.get(i));
+    }
 }
