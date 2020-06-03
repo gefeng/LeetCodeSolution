@@ -1,7 +1,5 @@
 package data_structure;
 
-import com.sun.source.tree.Tree;
-
 import java.util.*;
 
 public class BinaryTree {
