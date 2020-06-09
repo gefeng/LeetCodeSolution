@@ -129,4 +129,12 @@ public class TestSuiteBinaryTree {
         for(int i = 0; i < expected.length; i++)
             assertEquals(expected[i], output.get(i));
     }
+
+    @Test
+    public void Q703() {
+        Q703 q = new Q703(3, new int[] {4, 5, 8, 2});
+        assertEquals(4, q.add(4));
+        assertEquals(5, q.add(6));
+        assertEquals(6, q.add(10));
+    }
 }
