@@ -137,4 +137,10 @@ public class TestSuiteBinaryTree {
         assertEquals(5, q.add(6));
         assertEquals(6, q.add(10));
     }
+
+    @Test void Q220() {
+        //assertEquals(true, new Q220().containsNearbyAlmostDuplicate(new int[] {1,2,3,1}, 3, 0));
+        //assertEquals(true, new Q220().containsNearbyAlmostDuplicate(new int[] {1,0,1,1}, 1, 2));
+        assertEquals(false, new Q220().containsNearbyAlmostDuplicate(new int[] {1,5,9,1,5,9}, 2, 3));
+    }
 }
