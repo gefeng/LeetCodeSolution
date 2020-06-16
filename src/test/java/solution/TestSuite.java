@@ -43,4 +43,10 @@ public class TestSuite {
             assertEquals(expected[i], new Q1221().balancedStringSplit(input[i]));
         }
     }
+
+    @Test
+    public void q286Test() {
+        int[][] rooms = {{2147483647,0,2147483647,2147483647,0,2147483647,-1,2147483647}};
+        new Q286().wallsAndGates(rooms);
+    }
 }
