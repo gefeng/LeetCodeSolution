@@ -91,4 +91,10 @@ public class TestSuite {
         Q279 q = new Q279();
         q.numSquaresBFS(18);
     }
+    
+    @Test
+    public void q739Test() {
+        Q739 q = new Q739();
+        q.dailyTemperatures(new int[] {73,74,75,71,69,72,76,73});
+    }
 }
