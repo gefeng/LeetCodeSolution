@@ -97,4 +97,10 @@ public class TestSuite {
         Q739 q = new Q739();
         q.dailyTemperatures(new int[] {73,74,75,71,69,72,76,73});
     }
+
+    @Test
+    public void q494Test() {
+        Q494 q = new Q494();
+        q.findTargetSumWaysMS(new int[] {1, 1, 1, 1, 1}, 3);
+    }
 }
