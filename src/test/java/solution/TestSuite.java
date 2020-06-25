@@ -103,4 +103,10 @@ public class TestSuite {
         Q494 q = new Q494();
         q.findTargetSumWaysMS(new int[] {1, 1, 1, 1, 1}, 3);
     }
+
+    @Test
+    public void q498Test() {
+        Q498 q = new Q498();
+        q.findDiagonalOrder(new int[][] { {1, 2, 3}, {4, 5, 6}, {7, 8, 9} });
+    }
 }
