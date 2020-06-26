@@ -109,4 +109,10 @@ public class TestSuite {
         Q498 q = new Q498();
         q.findDiagonalOrder(new int[][] { {1, 2, 3}, {4, 5, 6}, {7, 8, 9} });
     }
+
+    @Test
+    public void q54Test() {
+        Q54 q = new Q54();
+        q.spiralOrder(new int[][] { {1, 2, 3}, {4, 5, 6}, {7, 8, 9} });
+    }
 }
