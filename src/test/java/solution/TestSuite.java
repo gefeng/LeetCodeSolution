@@ -115,4 +115,10 @@ public class TestSuite {
         Q54 q = new Q54();
         q.spiralOrder(new int[][] { {1, 2, 3}, {4, 5, 6}, {7, 8, 9} });
     }
+
+    @Test
+    public void q151Test() {
+        Q151 q = new Q151();
+        System.out.println(q.reverseWordsBuildin("this is  a   string!  "));
+    }
 }
