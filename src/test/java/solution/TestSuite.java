@@ -121,4 +121,10 @@ public class TestSuite {
         Q151 q = new Q151();
         System.out.println(q.reverseWordsBuildin("this is  a   string!  "));
     }
+
+    @Test
+    public void q69Test() {
+        Q69 q = new Q69();
+        q.mySqrt(2147395599);
+    }
 }
