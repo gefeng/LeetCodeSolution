@@ -127,4 +127,13 @@ public class TestSuite {
         Q69 q = new Q69();
         q.mySqrt(2147395599);
     }
+
+    @Test
+    public void q162Test() {
+        Q162 q = new Q162();
+        int[] ans = q.findNextGreaterElement(new int[] {3,4,1,3,2,7,5});
+        for(int i = 0; i < ans.length; i++) {
+            System.out.print(ans[i]);
+        }
+    }
 }
