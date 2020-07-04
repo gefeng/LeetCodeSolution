@@ -129,11 +129,8 @@ public class TestSuite {
     }
 
     @Test
-    public void q162Test() {
-        Q162 q = new Q162();
-        int[] ans = q.findNextGreaterElement(new int[] {3,4,1,3,2,7,5});
-        for(int i = 0; i < ans.length; i++) {
-            System.out.print(ans[i]);
-        }
+    public void q658Test() {
+        Q658 q = new Q658();
+        q.findClosestElements(new int[] {0,2,2,3,4,6,7,8,9,9}, 4, 5);
     }
 }
