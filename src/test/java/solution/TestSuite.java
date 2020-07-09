@@ -133,4 +133,16 @@ public class TestSuite {
         Q658 q = new Q658();
         q.findClosestElements(new int[] {0,2,2,3,4,6,7,8,9,9}, 4, 5);
     }
+
+    @Test
+    public void q367Test() {
+        Q367 q = new Q367();
+        q.isPerfectSquare(808201);
+    }
+
+    @Test
+    public void q719Test() {
+        Q719 q = new Q719();
+        q.smallestDistancePair(new int[] {9,10,7,10,6,1,5,4,9,8}, 18);
+    }
 }
