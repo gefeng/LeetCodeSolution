@@ -145,4 +145,31 @@ public class TestSuite {
         Q719 q = new Q719();
         q.smallestDistancePair(new int[] {9,10,7,10,6,1,5,4,9,8}, 18);
     }
+
+    @Test
+    public void q136Test() {
+        Q136 q = new Q136();
+        q.singleNumber(new int[] {2, 2, 1});
+    }
+
+    @Test
+    public void q202Test() {
+        Q202 q = new Q202();
+        q.isHappy(2);
+    }
+
+    @Test
+    public void q381Test() {
+        Q381 q = new Q381();
+        q.insert(4);
+        q.insert(3);
+        q.insert(4);
+        q.insert(2);
+        q.insert(4);
+        q.remove(4);
+        q.remove(3);
+        q.remove(4);
+        q.remove(4);
+        q.getRandom();
+    }
 }
