@@ -8,4 +8,9 @@ public class ListNode {
         val = x;
         next = null;
     }
+
+    public ListNode(int x, ListNode next) {
+        val = x;
+        this.next = next;
+    }
 }

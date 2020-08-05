@@ -1,6 +1,11 @@
 package solution;
 
+import annotations.Problem;
 import org.junit.jupiter.api.Test;
+
+import java.sql.PseudoColumnUsage;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestSuite {
@@ -171,5 +176,66 @@ public class TestSuite {
         q.remove(4);
         q.remove(4);
         q.getRandom();
+    }
+
+    @Test
+    public void q912Test() {
+        Q912 q = new Q912();
+        q.sortArray(new int[] {5, 1, 2, 3});
+    }
+
+    @Test
+    public void q52Test() {
+        Q52 q = new Q52();
+        q.totalNQueens(4);
+        q.placeQueen(2, 1, 4);
+        q.removeQueen(2, 1, 4);
+        q.placeQueen(1, 2, 4);
+    }
+
+    @Test
+    public void q77Test() {
+        Q77 q = new Q77();
+        q.combine(4, 2);
+    }
+
+    @Test
+    public void q84Test() {
+        Q84 q = new Q84();
+        q.largestRectangleArea(new int[] {0,0,0,0,0,0,0,0,2147483647});
+    }
+
+    @Test
+    public void q46Test() {
+        Q46 q = new Q46();
+        q.permute(new int[] {1, 2, 3});
+    }
+
+    @Test
+    public void q17Test() {
+        Q17 q = new Q17();
+        q.letterCombinations("23");
+    }
+
+    @Test
+    public void q218Test() {
+        Q218 q = new Q218();
+        int[][] b1 = new int[][] {
+                new int[] {7,11,4},
+                new int[] {8,11,3},
+                new int[] {9,11,2},
+                new int[] {10,11,1},
+        };
+        int[][] b2 = new int[][] {
+                new int[] {997,1001,4},
+                new int[] {998,1001,3},
+                new int[] {999,1001,2},
+                new int[] {1000,1001,1},
+        };
+        List<List<Integer>> ans = q.getSkylinePQ(b2);
+
+        Integer a = 128;
+        Integer b = 128;
+        System.out.println(a == b);
     }
 }
