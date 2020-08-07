@@ -238,4 +238,15 @@ public class TestSuite {
         Integer b = 128;
         System.out.println(a == b);
     }
+
+    @Test
+    public void q707Test() {
+        Q707 q = new Q707();
+        q.addAtHead(1);
+        q.addAtTail(3);
+        q.addAtIndex(1, 2);
+        q.get(1);
+        q.deleteAtIndex(1);
+        q.get(1);
+    }
 }
