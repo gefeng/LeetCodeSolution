@@ -122,4 +122,98 @@ public class Q912 {
 
         return j;
     }
+
+
+    /**
+     * Selections Sort
+     * */
+    private int[] selectionSort(int[] nums) {
+        if(nums.length < 2)
+            return nums;
+
+        for(int i = 0; i < nums.length - 1; i++) {
+            int minIndex = i;
+            for(int j = i + 1; j < nums.length; j++) {
+                if(nums[j] < nums[minIndex])
+                    minIndex = j;
+            }
+            int temp = nums[i];
+            nums[i] = nums[minIndex];
+            nums[minIndex] = temp;
+        }
+
+        return nums;
+    }
+
+    /**
+     * Bubble Sort
+     * */
+    private int[] bubbleSort(int[] nums) {
+        if(nums.length < 2)
+            return nums;
+
+        for(int i = nums.length - 1; i >= 0; i--) {
+            for(int j = 0; j < i; j++) {
+                if(nums[j] > nums[j + 1]) {
+                    int temp = nums[j];
+                    nums[j] = nums[j + 1];
+                    nums[j + 1] = temp;
+                }
+            }
+        }
+        return nums;
+    }
+
+    /**
+     * Insertion Sort
+     * */
+    private int[] insertionSort(int[] nums) {
+        if(nums.length < 2)
+            return nums;
+
+        for(int i = 1; i < nums.length; i++) {
+            for(int j = i; j > 0; j--) {
+                if(nums[j] < nums[j - 1]) {
+                    int temp = nums[j - 1];
+                    nums[j - 1] = nums[j];
+                    nums[j] = temp;
+                }
+            }
+        }
+        return nums;
+    }
+
+    /**
+     * Heap Sort
+     */
+    private int[] heapSort(int[] nums) {
+        for(int i = nums.length / 2 - 1; i >= 0; i--) {
+            heapify(nums, i, nums.length - 1);
+        }
+        for(int i = nums.length - 1; i >= 0; i--) {
+            int temp = nums[i];
+            nums[i] = nums[0];
+            nums[0] = temp;
+            heapify(nums, 0, i - 1);
+        }
+        return nums;
+    }
+
+    private void heapify(int[] nums, int i, int end) {
+        while(i <= end) {
+            int l = i * 2 + 1;
+            int r = i * 2 + 2;
+            int maxIndex = i;
+            if(l <= end && nums[l] > nums[maxIndex])
+                maxIndex = l;
+            if(r <= end && nums[r] > nums[maxIndex])
+                maxIndex = r;
+            if(maxIndex == i)
+                break;
+            int temp = nums[i];
+            nums[i] = nums[maxIndex];
+            nums[maxIndex] = temp;
+            i = maxIndex;
+        }
+    }
 }
