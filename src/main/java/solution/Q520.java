@@ -24,4 +24,14 @@ public class Q520 {
                 upperCaseCount == word.length() ||
                 (upperCaseCount == 1 && 'Z' - word.charAt(0) >= 0);
     }
+
+    /**
+     * 1st case: all uppercase [A-Z]*
+     * 2nd case: all lowercase [a-z]*
+     * 3rd case: initial capital [A-Z][a-z]*
+     * combine 2 + 3: .[a-z]*
+     * */
+    public boolean detectCapitalUseRegex(String word) {
+        return word.matches("[A-Z]*|.[a-z]*");
+    }
 }
