@@ -1,6 +1,7 @@
 package enums;
 
 public enum QTag {
+    NONE,
     ARRAY,
     HASH_TABLE,
     LINKED_LIST,

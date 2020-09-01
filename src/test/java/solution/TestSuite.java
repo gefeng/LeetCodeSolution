@@ -281,6 +281,7 @@ public class TestSuite {
         String[] words = new String[] {"abcd","dcba","lls","s","sssll",""};
         q.palindromePairs(words);
     }
+
     @Test
     public void q1089Test() {
         Q1089 q = new Q1089();
