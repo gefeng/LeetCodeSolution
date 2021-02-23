@@ -4,10 +4,7 @@ import annotations.Problem;
 import enums.QDifficulty;
 import enums.QTag;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Set;
+import java.util.*;
 
 @Problem(
         title = "Friend Circles",
@@ -59,6 +56,36 @@ public class Q547 {
     }
 
     public int findCircleNumUnionFind(int[][] M) {
+        int count = 0;
+        int n = M.length;
+        int[] parent = new int[n];
+        Arrays.fill(parent, -1);
+        for(int i = 0; i < n; i++) {
+            for(int j = 0; j < n; j++) {
+                if(i != j && M[i][j] == 1)
+                    union(parent, i, j);
+            }
+        }
 
+        for(int i = 0; i < n; i++) {
+            if(parent[i] == -1)
+                count++;
+        }
+        return count;
+    }
+
+    private void union(int[] parent, int setX, int setY) {
+        int headX = find(parent, setX);
+        int headY = find(parent, setY);
+        if(headX != headY)
+            parent[headX] = headY;
+    }
+
+    private int find(int[] parent, int set) {
+        if(parent[set] == -1)
+            return set;
+        int head = find(parent, parent[set]);
+        parent[set] = head; // path compression
+        return head;
     }
 }
