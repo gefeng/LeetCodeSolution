@@ -287,4 +287,21 @@ public class TestSuite {
         Q1089 q = new Q1089();
         q.duplicateZeros(new int[] {9,9,9,4,8,0,0,3,7,2,0,0,0,0,9,1,0,0,1,1,0,5,6,3,1,6,0,0,2,3,4,7,0,3,9,3,6,5,8,9,1,1,3,2,0,0,7,3,3,0,5,7,0,8,1,9,6,3,0,8,8,8,8,0,0,5,0,0,0,3,7,7,7,7,5,1,0,0,8,0,0});
     }
+
+    @Test
+    public void q322Test() {
+        Q322 q = new Q322();
+        q.findItinerary(Arrays.asList(Arrays.asList("AXA","EZE"),Arrays.asList("EZE","AUA"),Arrays.asList("ADL","JFK"),Arrays.asList("ADL","TIA"),Arrays.asList("AUA","AXA"),Arrays.asList("EZE","TIA"),
+                Arrays.asList("EZE","TIA"),Arrays.asList("AXA","EZE"),Arrays.asList("EZE","ADL"),Arrays.asList("ANU","EZE"),Arrays.asList("TIA","EZE"),Arrays.asList("JFK","ADL"),Arrays.asList("AUA","JFK"),Arrays.asList("JFK","EZE"),Arrays.asList("EZE","ANU"), 
+                Arrays.asList("ADL","AUA"),Arrays.asList("ANU","AXA"),Arrays.asList("AXA","ADL"),Arrays.asList("AUA","JFK"),Arrays.asList("EZE","ADL"),Arrays.asList("ANU","TIA"),Arrays.asList("AUA","JFK"),Arrays.asList("TIA","JFK"),Arrays.asList("EZE","AUA"),
+                Arrays.asList("AXA","EZE"),Arrays.asList("AUA","ANU"),Arrays.asList("ADL","AXA"),Arrays.asList("EZE","ADL"),Arrays.asList("AUA","ANU"),Arrays.asList("AXA","EZE"),Arrays.asList("TIA","AUA"),Arrays.asList("AXA","EZE"),Arrays.asList("AUA","SYD"),
+                Arrays.asList("ADL","JFK"),Arrays.asList("EZE","AUA"),Arrays.asList("ADL","ANU"),Arrays.asList("AUA","TIA"),Arrays.asList("ADL","EZE"),Arrays.asList("TIA","JFK"),Arrays.asList("AXA","ANU"),Arrays.asList("JFK","AXA"),Arrays.asList("JFK","ADL"),
+                Arrays.asList("ADL","EZE"),Arrays.asList("AXA","TIA"),Arrays.asList("JFK","AUA"),Arrays.asList("ADL","EZE"),Arrays.asList("JFK","ADL"),Arrays.asList("ADL","AXA"),Arrays.asList("TIA","AUA"),Arrays.asList("AXA","JFK"),Arrays.asList("ADL","AUA"),
+                Arrays.asList("TIA","JFK"),Arrays.asList("JFK","ADL"),Arrays.asList("JFK","ADL"),Arrays.asList("ANU","AXA"),Arrays.asList("TIA","AXA"),Arrays.asList("EZE","JFK"),Arrays.asList("EZE","AXA"),Arrays.asList("ADL","TIA"),Arrays.asList("JFK","AUA"),
+                Arrays.asList("TIA","EZE"),Arrays.asList("EZE","ADL"),Arrays.asList("JFK","ANU"),Arrays.asList("TIA","AUA"),Arrays.asList("EZE","ADL"),Arrays.asList("ADL","JFK"),Arrays.asList("ANU","AXA"),Arrays.asList("AUA","AXA"),Arrays.asList("ANU","EZE"),
+                Arrays.asList("ADL","AXA"),Arrays.asList("ANU","AXA"),Arrays.asList("TIA","ADL"),Arrays.asList("JFK","ADL"),Arrays.asList("JFK","TIA"),Arrays.asList("AUA","ADL"),Arrays.asList("AUA","TIA"),Arrays.asList("TIA","JFK"),Arrays.asList("EZE","JFK"),
+                Arrays.asList("AUA","ADL"),Arrays.asList("ADL","AUA"),Arrays.asList("EZE","ANU"),Arrays.asList("ADL","ANU"),Arrays.asList("AUA","AXA"),Arrays.asList("AXA","TIA"),Arrays.asList("AXA","TIA"),Arrays.asList("ADL","AXA"),Arrays.asList("EZE","AXA"),
+                Arrays.asList("AXA","JFK"),Arrays.asList("JFK","AUA"),Arrays.asList("ANU","ADL"),Arrays.asList("AXA","TIA"),Arrays.asList("ANU","AUA"),Arrays.asList("JFK","EZE"),Arrays.asList("AXA","ADL"),Arrays.asList("TIA","EZE"),Arrays.asList("JFK","AXA"),
+                Arrays.asList("AXA","ADL"),Arrays.asList("EZE","AUA"),Arrays.asList("AXA","ANU"),Arrays.asList("ADL","EZE"),Arrays.asList("AUA","EZE")));
+    }
 }
