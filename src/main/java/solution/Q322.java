@@ -4,44 +4,84 @@ import annotations.Problem;
 import enums.QDifficulty;
 import enums.QTag;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
 
 @Problem(
-        title = "Reconstruct Itinerary",
+        title = "Coin Change",
         difficulty = QDifficulty.MEDIUM,
-        tag = QTag.GRAPH,
-        url = "https://leetcode.com/problems/reconstruct-itinerary/"
+        tag = QTag.DYNAMIC_PROGRAMMING,
+        url = "https://leetcode.com/problems/coin-change/"
 )
 public class Q322 {
-    public List<String> findItinerary(List<List<String>> tickets) {
-        HashMap<String, List<String>> graph = new HashMap<>();
-        buildGraph(tickets, graph);
-
-        List<String> route = new LinkedList<>();
-        dfs(graph, "JFK", route);
-
-        return route;
+    public int coinChange(int[] coins, int amount) {
+        return bfsFindShortestPath(coins, amount);
     }
 
-    private void buildGraph(List<List<String>> tickets, HashMap<String, List<String>> graph) {
-        for(List<String> ticket : tickets) {
-            String dep = ticket.get(0);
-            String arr = ticket.get(1);
-            if(!graph.containsKey(dep))
-                graph.put(dep, new LinkedList<>());
-            graph.get(dep).add(arr);
-        }
+    private int bfsFindShortestPath(int[] coins, int amount) {
+        int level = 0;
+        Queue<Integer> queue = new LinkedList<>();
+        HashSet<Integer> visited = new HashSet<>();
 
-        for(String key : graph.keySet())
-            Collections.sort(graph.get(key));
+        queue.offer(amount);
+        visited.add(amount);
+        while(!queue.isEmpty()) {
+            int size = queue.size();
+            for(int i = 0; i < size; i++) {
+                int remain = queue.poll();
+                if(remain == 0)
+                    return level;
+                for(int coin : coins) {
+                    if(remain - coin >= 0 && !visited.contains(remain - coin)) {
+                        queue.offer(remain - coin);
+                        visited.add(remain - coin);
+                    }
+                }
+            }
+            level++;
+        }
+        return -1;
     }
 
-    private void dfs(HashMap<String, List<String>> graph, String airport, List<String> route) {
-        if(graph.containsKey(airport)) {
-            List<String> neighbors = graph.get(airport);
-            while(!neighbors.isEmpty())
-                dfs(graph, neighbors.remove(0), route);
+    private int recursiveMemoization(int[] coins, int amount) {
+        return ccHelper(coins, amount, new Integer[amount + 1]);
+    }
+
+    private int ccHelper(int[] coins, int amount, Integer[] memo) {
+        if(amount < 0)
+            return -1;
+        if(amount == 0)
+            return 0;
+        if(memo[amount] != null)
+            return memo[amount];
+
+        int minCoins = -1;
+        for(int coin : coins) {
+            int numCoins = ccHelper(coins, amount - coin, memo);
+            if(numCoins != -1)
+                minCoins = minCoins == -1 ? numCoins + 1: Math.min(minCoins, numCoins + 1);
         }
-        route.add(0, airport);
+        memo[amount] = minCoins;
+        return minCoins;
+    }
+
+    // dp[i] = minimum number of coins to make up amount
+    // dp[i] = dp[i - 1] + 1; if i - 1 is valid and dp[i - 1] != -1
+    private int dpSolution(int[] coins, int amount) {
+        int[] dp = new int[amount + 1];
+        Arrays.fill(dp, -1);
+        dp[0] = 0;
+
+        for(int i = 1; i <= amount; i++) {
+            for(int coin : coins) {
+                int remain = i - coin;
+                if(remain >= 0 && dp[remain] != -1)
+                    dp[i] = dp[i] == -1 ? dp[remain] + 1 : Math.min(dp[i], dp[remain] + 1);
+            }
+        }
+
+        return dp[amount];
     }
 }
