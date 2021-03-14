@@ -7,7 +7,7 @@ import enums.QTag;
 @Problem(
         title = "Rectangle Overlap",
         difficulty = QDifficulty.EASY,
-        tag = QTag.MATH;
+        tag = QTag.MATH,
         url = "https://leetcode.com/problems/rectangle-overlap/"
 )
 public class Q836 {
