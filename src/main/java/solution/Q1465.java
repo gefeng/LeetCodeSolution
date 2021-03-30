@@ -30,7 +30,7 @@ public class Q1465 {
 
         int max = 0;
 
-        // be careful with 1 cut. 
+        // be careful with 1 cut.
         max = Math.max(max, cuts[0] - 0);
         max = Math.max(max, len - cuts[cuts.length - 1]);
         for(int i = 1; i < cuts.length; i++) {
