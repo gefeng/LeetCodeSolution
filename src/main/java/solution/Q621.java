@@ -67,19 +67,19 @@ public class Q621 {
     }
 
     /*
-    * The solution is based on the fact that the maximum idol time is defined by the most frequent task.
+    * The solution is based on the fact that the maximum idle time is determined by the most frequent task.
     * WHY?
     * There are two situations
     * Lets say we have 5 A tasks and it's the most frequent task. 2 is the cooldown. idle time A task is (5 - 1) * 2 = 8
     * We can reuse these 8 time slots to process other tasks
-    * 1. the rest of the tasks cannot fill all the 8 time slots
+    * case 1. the rest of the tasks cannot fill all the 8 time slots
     * i.e. A B C A B . A .. A .. A
-    * It's obvious the maximum idol time is driven by A's idol time
-    * 2. 8 time slots are not enough for the rest of the tasks
+    * It's obvious the maximum idle time is driven by A's idle time
+    * case 2. 8 time slots are not enough for the rest of the tasks
     * i.e. A B C A B C A B C A B C A  what if we have 3 D tasks left?
     * we can insert as many different type of tasks as possible between A
     * i.e. A B C D A B C D A B C D A B C A
-    * Note we can only insert one task per type in one A's idol window. This guarantee each task is processed out of it's cooldown.
+    * Note we can only insert one task per type in one A's idle window. This guarantees each task is processed out of it's cooldown.
     * i.e A B B A is incorrect
     * */
     private int maxFreqSolution(char[] tasks, int n) {
