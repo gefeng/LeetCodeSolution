@@ -44,6 +44,27 @@ public class Q139 {
         return false;
     }
 
+    private boolean dfsBinaryBreak(String s, int start, int cut, HashSet<String> dict, Boolean[] memo) {
+        if(cut == s.length())
+            return dict.contains(s.substring(start, cut));
+
+        if(memo[start] != null)
+            return memo[start];
+
+        boolean res = false;
+        res = dfsBinaryBreak(s, start, cut + 1, dict, memo);  // not cut
+        memo[start] = res;
+        if(res)
+            return res;
+
+        String prefix = s.substring(start, cut);
+        if(dict.contains(prefix)) {
+            res = dfsBinaryBreak(s, cut, cut + 1, dict, memo); // cut
+        }
+        memo[start] = res;
+        return res;
+    }
+
     // O(n^3)
     private boolean dpSolution(String s, List<String> wordDict) {
         HashSet<String> dict = new HashSet<>();
