@@ -308,4 +308,37 @@ public class TestSuite {
         Q322 q = new Q322();
         System.out.println(q.coinChange(new int[] {1,2,5}, 100));
     }
+
+    private int maxCount(int[] nums) {
+        int maxCount = 0;
+        int count = 0;
+        int left = 0;
+        int right = 0;
+        while(right < nums.length) {
+            if(nums[right] == nums[left]) {
+                count++;
+                right++;
+            }
+            else {
+                maxCount = Math.max(maxCount, count);
+                count = 0;
+                left = right;
+            }
+        }
+
+        return Math.max(maxCount, count);
+    }
+
+    @Test
+    public void testMaxCount() {
+        int[] nums1 = new int[] {};
+        int[] nums2 = new int[] {1};
+        int[] nums3 = new int[] {1, 2, 3};
+        int[] nums4 = new int[] {1, 1, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 7, 8, 9, 9, 9, 9};
+
+        assertEquals(maxCount(nums1), 0);
+        assertEquals(maxCount(nums2), 1);
+        assertEquals(maxCount(nums3), 1);
+        assertEquals(maxCount(nums4), 7);
+    }
 }
