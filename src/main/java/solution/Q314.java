@@ -5,9 +5,7 @@ import data_structure.TreeNode;
 import enums.QDifficulty;
 import enums.QTag;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Problem(
         title = "Binary Tree Vertical Order Traversal",
@@ -64,5 +62,45 @@ public class Q314 {
 
         preorder(root.left, posX - 1, posY + 1, nodes);
         preorder(root.right, posX + 1, posY + 1, nodes);
+    }
+
+    private List<List<Integer>> bfsSolution(TreeNode root) {
+        if(root == null)
+            return new ArrayList<>();
+
+        Map<Integer, List<Integer>> colMap = new HashMap<>();
+        Queue<TreeNode> nQueue = new ArrayDeque<>();
+        Queue<Integer> cQueue = new ArrayDeque<>();
+        nQueue.offer(root);
+        cQueue.offer(0);
+        int minCol = Integer.MAX_VALUE;
+        int maxCol = Integer.MIN_VALUE;
+        while(!nQueue.isEmpty()) {
+            int size = nQueue.size();
+            for(int i = 0; i < size; i++) {
+                TreeNode n = nQueue.poll();
+                int c = cQueue.poll();
+
+                colMap.computeIfAbsent(c, k -> new ArrayList<>()).add(n.val);
+                minCol = Math.min(minCol, c);
+                maxCol = Math.max(maxCol, c);
+
+                if(n.left != null) {
+                    nQueue.offer(n.left);
+                    cQueue.offer(c - 1);
+                }
+                if(n.right != null) {
+                    nQueue.offer(n.right);
+                    cQueue.offer(c + 1);
+                }
+            }
+        }
+
+        List<List<Integer>> ans = new ArrayList<>();
+        for(int i = minCol; i <= maxCol; i++) {
+            ans.add(colMap.get(i));
+        }
+
+        return ans;
     }
 }
