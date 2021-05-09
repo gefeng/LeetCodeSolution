@@ -11,40 +11,39 @@ import enums.QTag;
         url = "https://leetcode.com/problems/diagonal-traverse/"
 )
 public class Q498 {
-    public int[] findDiagonalOrder(int[][] matrix) {
-        if(matrix == null || matrix.length == 0)
-            return new int[0];
+    private static final int[][] DIRECTIONS = new int[][] {{-1, 1}, {1, -1}};
+    public int[] findDiagonalOrder(int[][] mat) {
+        int m = mat.length;
+        int n = mat[0].length;
+        int[] ans = new int[m * n];
 
-        int width = matrix[0].length;
-        int height = matrix.length;
-        int[] dt = new int[width * height];
-        int row = 0;
-        int col = 0;
-        int dir = -1;
-        for(int i = 0; i < dt.length; i++) {
-            dt[i] = matrix[row][col];
-            row += dir;
-            col -= dir;
-            if(col > width - 1) {
-                row += 2;
-                col = width - 1;
-                dir *= -1;
+        int r = 0;
+        int c = 0;
+        int d = 0;
+        int i = 0;
+        while(i < m * n) {
+            while(r >= 0 && c >= 0 && r < m && c < n) {
+                ans[i++] = mat[r][c];
+                r += DIRECTIONS[d][0];
+                c += DIRECTIONS[d][1];
             }
-            if(row < 0) {
-                row = 0;
-                dir *= -1;
+
+            // move one step horizontally or vertically depends on current direction
+            if(d == 0) {
+                c++;
+            } else {
+                r++;
             }
-            if(row > height - 1) {
-                row = height - 1;
-                col += 2;
-                dir *= -1;
-            }
-            if(col < 0) {
-                col = 0;
-                dir *= -1;
+
+            d = (d + 1) % DIRECTIONS.length;
+            r += DIRECTIONS[d][0];
+            c += DIRECTIONS[d][1];
+            if(r < 0 || c < 0 || r > m - 1 || c > n - 1) {
+                r += DIRECTIONS[d][0];
+                c += DIRECTIONS[d][1];
             }
         }
 
-        return dt;
+        return ans;
     }
 }
