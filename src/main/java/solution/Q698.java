@@ -4,6 +4,8 @@ import annotations.Problem;
 import enums.QDifficulty;
 import enums.QTag;
 
+import java.util.Arrays;
+
 @Problem(
         title = "Partition to K Equal Sum Subsets",
         difficulty = QDifficulty.MEDIUM,
@@ -71,5 +73,38 @@ public class Q698 {
         }
 
         return false;
+    }
+
+    /*
+    *   bit manipulation dp
+    * */
+    private boolean dpBitMask(int[] nums, int k) {
+        int n = nums.length;
+        int sum = 0;
+        for(int num : nums) {
+            sum += num;
+        }
+
+        if(sum % k != 0) {
+            return false;
+        }
+
+        int target = sum / k;
+        int[] dp = new int[1<<n];
+        Arrays.fill(dp, -1);
+        dp[0] = 0;
+
+        for(int mask = 0; mask < dp.length; mask++) {
+            if(dp[mask] == -1) {
+                continue;
+            }
+            for(int i = 0; i < n; i++) {
+                if((mask & (1<<i)) == 0 && dp[mask] + nums[i] <= target) {
+                    dp[mask | (1<<i)] = (dp[mask] + nums[i]) % target;
+                }
+            }
+        }
+
+        return dp[(1<<n) - 1] == 0;
     }
 }

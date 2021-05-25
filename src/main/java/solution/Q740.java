@@ -16,7 +16,7 @@ public class Q740 {
             dp[i] means the best score so far
         transition:
             dp[i] = Math.max(dp[i - 1], dp[i- 2] + i * count[i])
-                    dp[i - 1] means pick previouse one so current one got deleted
+                    dp[i - 1] means pick previous one so current one got deleted
                     dp[i - 2] + i * count[i] means pick current number of delete its neighbors
     */
     public int deleteAndEarn(int[] nums) {
