@@ -5,6 +5,7 @@ import enums.QDifficulty;
 import enums.QTag;
 
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Deque;
 
 @Problem(
