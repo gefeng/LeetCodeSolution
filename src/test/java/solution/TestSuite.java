@@ -2,9 +2,8 @@ package solution;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -340,5 +339,14 @@ public class TestSuite {
         assertEquals(maxCount(nums2), 1);
         assertEquals(maxCount(nums3), 1);
         assertEquals(maxCount(nums4), 7);
+    }
+
+    @Test
+    public void testRegex() {
+        String expression = "(0&0)&(0&0&0)";
+        Queue<String> tokens = Arrays.stream(expression.split("(?<=.)")).collect(Collectors.toCollection(ArrayDeque::new));
+        while(!tokens.isEmpty()) {
+            System.out.println(tokens.poll());
+        }
     }
 }

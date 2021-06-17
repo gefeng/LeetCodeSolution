@@ -4,10 +4,7 @@ import annotations.Problem;
 import enums.QDifficulty;
 import enums.QTag;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Problem(
         title = "Minimum Cost to Change the Final Value of Expression",
@@ -39,16 +36,20 @@ public class Q1896 {
                 x = 1, y = 0 [1, 1]
     */
     public int minOperationsToFlip(String expression) {
+        return recursiveDescentParsing(expression);
+    }
+
+    private int stackDfsSolution(String expression) {
         int n = expression.length();
         Map<Integer, Integer> pMap = new HashMap<>();
         Deque<Integer> pStack = new ArrayDeque<>();
 
         // Save positions of each pair of parentheses
-        for(int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             char c = expression.charAt(i);
-            if(c == '(') {
+            if (c == '(') {
                 pStack.push(i);
-            } else if(c == ')') {
+            } else if (c == ')') {
                 pMap.put(i, pStack.pop());
             }
         }
@@ -119,5 +120,105 @@ public class Q1896 {
         }
 
         return res;
+    }
+
+
+    /*
+    * More General approach to solve similar problems
+    * */
+    private int recursiveDescentParsing(String expression) {
+        Queue<String> tokens = new ArrayDeque<>();
+        for(int i = 0; i < expression.length(); i++) {
+            tokens.add(String.valueOf(expression.charAt(i)));
+        }
+
+        Exp exp = readE(tokens);
+
+        return exp.evaluate()[1];
+    }
+
+    // read non-operator
+    private Exp readT(Queue<String> tokens) {
+        if(tokens.peek().equals("(")) {
+            tokens.poll();
+            Exp exp = readE(tokens);
+            tokens.poll();
+            return exp;
+        } else {
+            return new ExpVal(tokens.poll().charAt(0) - '0');
+        }
+    }
+
+    private Exp readE(Queue<String> tokens) {
+        Exp exp = readT(tokens);
+        while(!tokens.isEmpty() && !tokens.peek().equals(")")) {
+            String op = tokens.poll();
+            if(op.equals("&")) {
+                exp = new ExpAnd(exp, readT(tokens));
+            } else {
+                exp = new ExpOr(exp, readT(tokens));
+            }
+        }
+        return exp;
+    }
+
+    private abstract class Exp {
+        Exp left;
+        Exp right;
+
+        abstract int[] evaluate();
+    }
+
+    private class ExpVal extends Exp {
+        int val;
+        ExpVal(int val) {
+            this.val = val;
+        }
+
+        @Override
+        int[] evaluate() {
+            return new int[] { this.val, 1 };
+        }
+    }
+
+    private abstract class ExpOp extends Exp {
+        ExpOp(Exp left, Exp right) {
+            this.left = left;
+            this.right = right;
+        }
+    }
+
+    private class ExpAnd extends ExpOp {
+        ExpAnd(Exp left, Exp right) {
+            super(left, right);
+        }
+
+        @Override
+        int[] evaluate() {
+            int[] lRes = left.evaluate();
+            int[] rRes = right.evaluate();
+            if(lRes[0] != rRes[0]) {
+                return new int[] {0, 1};
+            } else{
+                return lRes[0] == 0 ? new int[] {0, Math.min(lRes[1], rRes[1]) + 1} : new int[] {1, Math.min(lRes[1], rRes[1])};
+            }
+        }
+    }
+
+    private class ExpOr extends ExpOp {
+        ExpOr(Exp left, Exp right) {
+            super(left, right);
+        }
+
+        @Override
+        int[] evaluate() {
+            int[] lRes = left.evaluate();
+            int[] rRes = right.evaluate();
+            if(lRes[0] != rRes[0]) {
+                return new int[] {1, 1};
+            } else{
+                return lRes[0] == 0 ? new int[] {0, Math.min(lRes[1], rRes[1])} : new int[] {1, Math.min(lRes[1], rRes[1]) + 1};
+            }
+        }
     }
 }
