@@ -71,7 +71,7 @@ public class Q1766 {
                 if(ancestors[cop] == null || ancestors[cop].size() == 0) {
                     continue;
                 }
-                
+
                 // just check the most recent added node.
                 int[] anc = ancestors[cop].get(ancestors[cop].size() - 1);
                 if(anc[1] > maxLevel) {
