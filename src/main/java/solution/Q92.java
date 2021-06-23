@@ -12,43 +12,33 @@ import enums.QTag;
         url = "https://leetcode.com/problems/reverse-linked-list-ii/"
 )
 public class Q92 {
+    /*
+    * Consider to use dummy head for linked list problem in which the head could be modified.
+    * */
     public ListNode reverseBetween(ListNode head, int left, int right) {
-        ListNode leftNode = null;
-        ListNode rightNode = null;
-        ListNode leftPrevNode = null;
-        ListNode rightNextNode = null;
+        ListNode dummy = new ListNode(0, head);
+        ListNode curr = dummy;
         ListNode prev = null;
-        ListNode curr = head;
-        int n = 0;
-        while(curr != null) {
-            n++;
-            if(left == n) {
-                leftNode = curr;
-                leftPrevNode = prev;
-            }
-            if(right == n) {
-                rightNode = curr;
-                rightNextNode = curr.next;
-            }
+        ListNode l = dummy;
+        int i = 0;
 
-            prev = curr;
+        while(i != left) {
+            l = curr;
             curr = curr.next;
+            i++;
         }
 
-        prev = null;
-        curr = leftNode;
-        rightNode.next = null;
-        while(curr != null) {
+        while(i <= right) {
             ListNode temp = curr.next;
             curr.next = prev;
             prev = curr;
             curr = temp;
+            i++;
         }
 
-        if(leftPrevNode != null)
-            leftPrevNode.next = rightNode;
-        leftNode.next = rightNextNode;
+        l.next.next = curr;
+        l.next = prev;
 
-        return leftPrevNode == null ? rightNode : head;
+        return dummy.next;
     }
 }
