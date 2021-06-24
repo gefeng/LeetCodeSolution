@@ -5,6 +5,7 @@ import enums.QDifficulty;
 import enums.QTag;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 @Problem(
         title = "Maximum Number of Events That Can Be Attended II",
@@ -14,7 +15,7 @@ import java.util.Arrays;
 )
 public class Q1751 {
     public int maxValue(int[][] events, int k) {
-        Arrays.sort(events, (a, b) -> Integer.compare(a[0], b[0]));
+        Arrays.sort(events, Comparator.comparingInt(a -> a[0]));
 
         return dfs(events, 0, k, new Integer[events.length][k + 1]);
     }
