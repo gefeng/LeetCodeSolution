@@ -5,6 +5,7 @@ import enums.QDifficulty;
 import enums.QTag;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Problem(
@@ -18,6 +19,51 @@ public class Q315 {
         Amazon OA
     */
     public List<Integer> countSmaller(int[] nums) {
+        return binaryIndexTreeSolution(nums);
+    }
+
+    private class BIT {
+        private int[] bit;
+        private int n;
+        BIT(int n) {
+            this.bit = new int[n];
+            this.n = n;
+        }
+
+        void add(int i, int k) {
+            while(i < n) {
+                bit[i] += k;
+                i += (i & -i);
+            }
+        }
+
+        int query(int i) {
+            int sum = 0;
+            while(i > 0) {
+                sum += bit[i];
+                i -= (i & -i);
+            }
+            return sum;
+        }
+    }
+
+    private List<Integer> binaryIndexTreeSolution(int[] nums) {
+        int n = nums.length;
+        List<Integer> ans = new ArrayList<>();
+
+        BIT bit = new BIT(20002);
+
+        for(int i = n - 1; i >= 0; i--) {
+            int idx = nums[i] + 10001 - 1;
+            ans.add(bit.query(idx));
+            bit.add(idx + 1, 1);
+        }
+
+        Collections.reverse(ans);
+        return ans;
+    }
+
+    private List<Integer> mergeSortSolution(int[] nums) {
         int len = nums.length;
         int[] counters = new int[len];
         int[] indices = new int[len];
