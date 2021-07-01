@@ -15,9 +15,8 @@ import java.util.List;
 )
 public class Q89 {
     public List<Integer> grayCode(int n) {
-        int size = getPower(n);
         List<Integer> ans = new ArrayList<>();
-        boolean[] seen = new boolean[size];
+        boolean[] seen = new boolean[1 << n];
 
         ans.add(0);
         seen[0] = true;
@@ -28,10 +27,7 @@ public class Q89 {
 
     private boolean backTrack(int n, int prev, List<Integer> ans, boolean[] seen) {
         if(ans.size() == seen.length) {
-            if(cntOneBits(prev) == 1) {
-                return true;
-            }
-            return false;
+            return true;
         }
 
         for(int i = 0; i < n; i++) {
@@ -50,24 +46,5 @@ public class Q89 {
         }
 
         return false;
-    }
-
-    private int cntOneBits(int n) {
-        int cnt = 0;
-        for(int i = 0; i < 16; i++) {
-            if(((1 << i) & n) != 0) {
-                cnt++;
-            }
-        }
-        return cnt;
-    }
-
-    private int getPower(int n) {
-        int ans = 1;
-        while(n != 0) {
-            ans *= 2;
-            n--;
-        }
-        return ans;
     }
 }
