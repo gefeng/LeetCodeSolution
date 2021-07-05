@@ -42,5 +42,6 @@ public enum QTag {
     SLIDING_WINDOW,
     LINE_SWEEP,
     ROLLING_HASH,
-    SUFFIX_ARRAY
+    SUFFIX_ARRAY,
+    MATRIX,
 }
