@@ -44,4 +44,5 @@ public enum QTag {
     ROLLING_HASH,
     SUFFIX_ARRAY,
     MATRIX,
+    PREFIX_SUM,
 }
