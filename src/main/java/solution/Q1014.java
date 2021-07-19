@@ -11,7 +11,7 @@ import enums.QTag;
         url = "https://leetcode.com/problems/best-sightseeing-pair/"
 )
 public class Q1014 {
-    /*
+    /**
         for each position, search for the best spot from left
         time: O(N)
         space: O(1)
