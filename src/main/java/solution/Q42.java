@@ -59,4 +59,33 @@ public class Q42 {
         }
         return waterArea;
     }
+
+    private int dpSol(int[] height) {
+        if(height.length == 0) {
+            return 0;
+        }
+        int n = height.length;
+        int[] dpL = new int[n];
+        int[] dpR = new int[n];
+
+        int max = 0;
+        for(int i = 0; i < n; i++) {
+            max = Math.max(max, height[i]);
+            dpL[i] = max;
+        }
+
+        max = 0;
+        for(int i = n - 1; i >= 0; i--) {
+            max = Math.max(max, height[i]);
+            dpR[i] = max;
+        }
+
+        int total = 0;
+        for(int i = 0; i < n; i++) {
+            int area = Math.min(dpL[i], dpR[i]) - height[i];
+            total += area;
+        }
+
+        return total;
+    }
 }
