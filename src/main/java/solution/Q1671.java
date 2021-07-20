@@ -64,7 +64,7 @@ public class Q1671 {
         int[] dp1 = new int[n];
         int[] dp2 = new int[n];
         int[] lis = new int[n];
-        
+
         int len = 0;
         for(int i = 0; i < n; i++) {
             int idx = Arrays.binarySearch(lis, 0, len, nums[i]);

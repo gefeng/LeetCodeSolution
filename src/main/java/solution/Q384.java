@@ -28,9 +28,11 @@ public class Q384 {
     /** Returns a random shuffling of the array. */
     public int[] shuffle() {
         int[] copy = Arrays.copyOfRange(origin, 0, origin.length);
+        int n = copy.length;
 
-        for(int i = 1; i < copy.length; i++) {
-            int j = rand.nextInt(i + 1);
+        // 0 n - 3  i =2  2 - n - 1
+        for(int i = 0; i < n; i++) {
+            int j = rand.nextInt(n - i) + i;
             int temp = copy[i];
             copy[i] = copy[j];
             copy[j] = temp;
