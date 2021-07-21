@@ -15,7 +15,7 @@ public class Q1664 {
      * [left] nums[i] [right]
      * 1. calculate suffix sum for right part
      * 2. calculate prefix sum for left part
-     * 
+     *
      * Time:  O(N)
      * Space: O(N)
      * */
