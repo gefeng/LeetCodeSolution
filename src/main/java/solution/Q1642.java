@@ -68,7 +68,7 @@ public class Q1642 {
 
     /**
      * use ladder until no ladder left, try to replace ladder with bricks.
-     * 
+     *
      * Time:  O(N * logN)
      * Space: O(N)
      * */
