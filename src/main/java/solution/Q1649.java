@@ -41,7 +41,7 @@ public class Q1649 {
             return query(j) - query(i);
         }
     }
-    
+
     private int binaryIndexTreeSol(int[] instructions) {
         int ans = 0;
         int max = 0;
