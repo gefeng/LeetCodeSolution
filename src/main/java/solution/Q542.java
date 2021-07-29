@@ -13,42 +13,108 @@ import java.util.*;
         url = "https://leetcode.com/problems/01-matrix/"
 )
 public class Q542 {
-    private int[][] directions = {{1, 0}, {-1, 0}, {0, -1}, {0, 1}};
-    public int[][] updateMatrix(int[][] matrix) {
-        Queue<Integer> queue = new LinkedList<>();
-        int w = matrix[0].length;
-        int h = matrix.length;
+    private static final int[][] DIRECTIONS = new int[][] {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+    public int[][] updateMatrix(int[][] mat) {
+        return bottomUpDpSol(mat);
+    }
 
-        for(int i = 0; i < h; i++) {
-            for(int j = 0; j < w; j++) {
-                if(matrix[i][j] == 0)
-                    queue.add(i * w + j);
-                else
-                    matrix[i][j] = Integer.MAX_VALUE;
+    /**
+     * Time:  O(M * N)
+     * Space: O(M * N)
+     * */
+    private int[][] multiSourceBfsSol(int[][] mat) {
+        int m = mat.length;
+        int n = mat[0].length;
+        int[][] res = new int[m][n];
+        Queue<int[]> queue = new ArrayDeque<>();
+
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                if(mat[i][j] == 0) {
+                    queue.offer(new int[] {i, j});
+                } else {
+                    res[i][j] = Integer.MAX_VALUE;
+                }
             }
         }
 
         int dist = 0;
         while(!queue.isEmpty()) {
             int size = queue.size();
+
             for(int i = 0; i < size; i++) {
-                int index = queue.poll();
-                int row = index / w;
-                int col = index % w;
-                for(int[] dir : directions) {
-                    int newRow = row + dir[0];
-                    int newCol = col + dir[1];
-                    if(newRow >= 0 && newCol >= 0 && newRow < h && newCol < w) {
-                        if(matrix[newRow][newCol] > dist + 1) {
-                            matrix[newRow][newCol] = dist + 1;
-                            queue.offer(newRow * w + newCol);
+                int[] pos = queue.poll();
+                int r = pos[0];
+                int c = pos[1];
+
+                for(int[] dir : DIRECTIONS) {
+                    int nr = r + dir[0];
+                    int nc = c + dir[1];
+                    if(nr >= 0 && nc >= 0 && nr < m && nc < n && mat[nr][nc] != 0) {
+                        if(res[nr][nc] > dist + 1) {
+                            res[nr][nc] = dist + 1;
+                            queue.offer(new int[] {nr, nc});
                         }
                     }
                 }
             }
+
             dist++;
         }
 
-        return matrix;
+        return res;
+    }
+
+    /*
+        state:
+            dp[i][j] means the shortest distance from 0 to mat[i][j]
+        transition:
+            dp[i][j] = min(dp[neighbors] + 1)
+    */
+    /**
+     * state:
+     *  dp[i][j] means the shortest distance from 0 to mat[i][j]
+     * transition:
+     *  dp[i][j] = min(dp[neighbors] + 1)
+     *
+     * Time:  O(M * N)
+     * Space: O(M * N)
+     * */
+    private int[][] bottomUpDpSol(int[][] mat) {
+        int m = mat.length;
+        int n = mat[0].length;
+        int[][] dp = new int[m][n];
+
+        for(int i = 0; i < m; i++) {
+            Arrays.fill(dp[i], 10000);
+        }
+
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                if(mat[i][j] == 0) {
+                    dp[i][j] = 0;
+                } else {
+                    if(i > 0) {
+                        dp[i][j] = Math.min(dp[i][j], dp[i - 1][j] + 1);
+                    }
+                    if(j > 0) {
+                        dp[i][j] = Math.min(dp[i][j], dp[i][j - 1] + 1);
+                    }
+                }
+            }
+        }
+
+        for(int i = m - 1; i >= 0; i--) {
+            for(int j = n - 1; j >= 0; j--) {
+                if(i < m - 1) {
+                    dp[i][j] = Math.min(dp[i][j], dp[i + 1][j] + 1);
+                }
+                if(j < n - 1) {
+                    dp[i][j] = Math.min(dp[i][j], dp[i][j + 1] + 1);
+                }
+            }
+        }
+
+        return dp;
     }
 }
