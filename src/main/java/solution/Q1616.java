@@ -18,23 +18,15 @@ public class Q1616 {
     public boolean checkPalindromeFormation(String a, String b) {
         int n = a.length();
 
-        if(isPalindrome(a) || isPalindrome(b)) {
-            return true;
-        }
-
         return canForm(a, b) || canForm(b, a);
     }
 
-    private boolean isPalindrome(String s) {
-        int l = 0;
-        int r = s.length() - 1;
-
-        while(l < r) {
-            if(s.charAt(l++) != s.charAt(r--)) {
+    private boolean isPalindrome(String s, int i, int j) {
+        while(i < j) {
+            if(s.charAt(i++) != s.charAt(j--)) {
                 return false;
             }
         }
-
         return true;
     }
 
@@ -51,33 +43,6 @@ public class Q1616 {
             j--;
         }
 
-        if(i >= j) {
-            return true;
-        }
-
-        int ii = i;
-        int jj = j;
-        while(ii < jj) {
-            if(a.charAt(ii) != a.charAt(jj)) {
-                break;
-            }
-            ii++;
-            jj--;
-        }
-
-        if(ii >= jj) {
-            return true;
-        }
-
-        ii = i;
-        jj = j;
-        while(ii < jj) {
-            if(b.charAt(ii) != b.charAt(jj)) {
-                return false;
-            }
-            ii++;
-            jj--;
-        }
-        return true;
+        return isPalindrome(a, i, j) || isPalindrome(b, i, j);
     }
 }
