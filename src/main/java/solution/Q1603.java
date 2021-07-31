@@ -11,16 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/design-parking-system/"
 )
 public class Q1603 {
-    /*
-        slots type: big, medium, small
-        big[]
-        med[]
-        sml[]
-        big = 1;
-        medium = 2;
-        small = 3
-    */
-
+    /**
+     * Time:  O(N)
+     * Space: O(1)
+     * */
     private int[] slotsRemain;
     public Q1603(int big, int medium, int small) {
         slotsRemain = new int[] {big, medium, small};
