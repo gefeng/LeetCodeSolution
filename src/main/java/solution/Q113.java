@@ -15,10 +15,13 @@ import java.util.List;
         url = "https://leetcode.com/problems/path-sum-ii/"
 )
 public class Q113 {
-    /*
-    * 为什么bfs不太好？ 题目要求找到左右满足条件的path，bfs会需要保存所有candidate而不是当前path
-    * space是O(n) 而dfs是O(logN)
-    * */
+    /**
+     * 为什么bfs不太好？ 题目要求找到左右满足条件的path，bfs会需要保存所有candidate而不是当前path
+     * space是O(n) 而dfs是O(logN)
+     *
+     * Time:  O(N * N)
+     * Space: O(N)
+     * */
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
         List<List<Integer>> path = new ArrayList<>();
         findPath(root, targetSum, new ArrayList<>(), path);
