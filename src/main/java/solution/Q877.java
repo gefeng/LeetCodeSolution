@@ -14,6 +14,8 @@ public class Q877 {
     /**
      * Each player wants to maximize the score difference.
      * Therefore return the max score difference can be achieved by opponent.
+     * Or
+     * Return true because Alex always win XD
      *
      * Time:  O(N ^ 2)
      * Space: O(N ^ 2)
