@@ -16,6 +16,11 @@ import java.util.List;
         url = "https://leetcode.com/problems/group-anagrams/"
 )
 public class Q49 {
+    /**
+     * L denotes maximum length of strs[i]
+     * Time:   O(N * L)
+     * Space:  O(N * L)
+     * */
     public List<List<String>> groupAnagramsCount(String[] strs) {
         HashMap<String, List<String>> map = new HashMap<>();
         for(String s : strs) {
