@@ -14,6 +14,10 @@ import javax.swing.table.TableRowSorter;
         url = "https://leetcode.com/problems/number-of-good-leaf-nodes-pairs/"
 )
 public class Q1530 {
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     private int count = 0;
     private int[] traverse(TreeNode root, int distance) {
         int[] ret = new int[distance + 1];
