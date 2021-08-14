@@ -13,7 +13,7 @@ import enums.QTag;
 public class Q1526 {
     /**
      * Wall brick is the best explanation of this problem
-     * 
+     *
      * Time:  O(N)
      * Space: O(N)
      * */
