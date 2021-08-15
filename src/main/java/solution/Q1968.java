@@ -31,9 +31,9 @@ public class Q1968 {
         int l = 0;
         int r = n - 1;
 
-        while(l <= r) {
+        while (l <= r) {
             res[i++] = nums[l];
-            if(i < n) {
+            if (i < n) {
                 res[i++] = nums[r];
             }
             l++;
