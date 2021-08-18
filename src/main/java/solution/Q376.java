@@ -4,9 +4,6 @@ import annotations.Problem;
 import enums.QDifficulty;
 import enums.QTag;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-
 @Problem(
         title = "Wiggle Subsequence",
         difficulty = QDifficulty.MEDIUM,
@@ -24,18 +21,18 @@ public class Q376 {
 
     private int test(int[] nums, int sign) {
         int n = nums.length;
-        Deque<Integer> stack = new ArrayDeque<>();
-        stack.push(nums[0]);
+        int pre = nums[0];
+        int res = 1;
 
         for(int i = 1; i < n; i++) {
-            if((nums[i] - stack.peek()) * sign <= 0) {
-                stack.pop();
-            } else {
+            if((nums[i] - pre) * sign > 0) {
                 sign *= -1;
+                res++;
+
             }
-            stack.push(nums[i]);
+            pre = nums[i];
         }
 
-        return stack.size();
+        return res;
     }
 }
