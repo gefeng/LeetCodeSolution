@@ -56,7 +56,7 @@ public class Q1339 {
     }
 
     /**
-     * similar to fast power 
+     * similar to fast power
      * */
     private int modMul(int x, int y) {
         int res = 0;
