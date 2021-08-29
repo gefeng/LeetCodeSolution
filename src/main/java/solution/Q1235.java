@@ -14,9 +14,10 @@ import java.util.Comparator;
         url = "https://leetcode.com/problems/maximum-profit-in-job-scheduling/"
 )
 public class Q1235 {
-    /*
-    * sort by start time guaranteed the non-overlapping schedule found is the closest one.
-    * */
+    /**
+     * Time:  O(N * logN)
+     * Space: O(N)
+     * */
     public int jobScheduling(int[] startTime, int[] endTime, int[] profit) {
         int n = startTime.length;
         int[][] jobs = new int[n][3];
