@@ -12,6 +12,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/maximum-average-subtree/"
 )
 public class Q1120 {
+    /**
+     * Time:  O(N)
+     * Space: O(1)
+     * */
     public double maximumAverageSubtree(TreeNode root) {
         return postorder(root)[2];
     }
