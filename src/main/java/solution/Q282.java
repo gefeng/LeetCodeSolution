@@ -16,6 +16,10 @@ import java.util.List;
         url = "https://leetcode.com/problems/expression-add-operators/"
 )
 public class Q282 {
+    /**
+     * Time:  O(4 ^ N * N)
+     * Space: O(4 ^ N * N)
+     * */
     private static final char[] OPERATORS = new char[] {
             '+', '-', '*'
     };
