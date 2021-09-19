@@ -11,13 +11,16 @@ import enums.QTag;
         url = "https://leetcode.com/problems/distinct-subsequences/"
 )
 public class Q115 {
-    /*
-        state:
-            dp[i][j] number of subsequences of s[0, i) which equals to t[0, j)
-        transition:
-            dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j] if s[i - 1] == t[j - 1]
-                     = dp[i - 1][j]  if s[i - 1] != t[j - 1]
-    */
+    /**
+     * state:
+     *   dp[i][j] number of subsequences of s[0, i) which equals to t[0, j)
+     * transition:
+     *   dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j] if s[i - 1] == t[j - 1]
+     *            = dp[i - 1][j]  if s[i - 1] != t[j - 1]
+     *
+     * Time:  O(M * N)
+     * Space: O(M * N)
+     * */
     public int numDistinct(String s, String t) {
         int m = s.length();
         int n = t.length();
