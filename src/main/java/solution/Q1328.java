@@ -11,6 +11,12 @@ import enums.QTag;
         url = "https://leetcode.com/problems/break-a-palindrome/"
 )
 public class Q1328 {
+    /**
+     * Brute force is Ok, but we go greedy.
+     *
+     * Time:  O(N)
+     * Space: O(1)
+     * */
     public String breakPalindrome(String palindrome) {
         int len = palindrome.length();
         if(len == 1)
