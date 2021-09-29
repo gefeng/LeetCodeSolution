@@ -14,12 +14,10 @@ import java.util.Map;
         url = "https://leetcode.com/problems/maximum-size-subarray-sum-equals-k/"
 )
 public class Q325 {
-    /*
-    * Save prefix sum, and check currSum - k
-    * if currSum - k = prevSum -> currSum - prevSum = k
-    * currSum - prevSum is the sum from map.get(prevSum) + 1 to i
-    * dist = i - map.get(prevSum) - 1 + 1 = i - map.get(prevSum)
-    * */
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     public int maxSubArrayLen(int[] nums, int k) {
         int n = nums.length;
         int maxLen = 0;
