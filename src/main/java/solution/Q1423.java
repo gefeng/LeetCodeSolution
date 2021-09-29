@@ -71,6 +71,10 @@ public class Q1423 {
         return maxScore;
     }
 
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     private int prefixSumSolution(int[] cardPoints, int k) {
         int n = cardPoints.length;
         int[] prefixSum = new int[n + 1];

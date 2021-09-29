@@ -24,6 +24,19 @@ public class Q1425 {
 
         Use a monotonic deque to to constant time maximum in sliding window lookup
     */
+    /**
+     * window size = k
+     *
+     * state:
+     *  dp[i] means max sum of subsequence ends at nums[i]
+     * transition:
+     *  dp[i] = max(nums[i], dp[i - j] + nums[i]) for each j in [1, k + 1]
+     *
+     * Use a monotonic deque to to constant time maximum in sliding window lookup
+     *
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     public int constrainedSubsetSum(int[] nums, int k) {
         int n = nums.length;
         int[] dp = new int[n];
