@@ -17,6 +17,38 @@ public class Q1416 {
      * */
     private static final int MOD = (int)1e9 + 7;
     public int numberOfArrays(String s, int k) {
+        return bottomUpSol(s, k);
+    }
+    
+    /**
+     * state:
+     *  dp[i] denotes number of arrays can be formed by using first i characters
+     * transition:
+     *  dp[i] = sum(dp[j] + 1) if [j, i] is a valid number
+     * */
+    private int bottomUpSol(String s, int k) {
+        int n = s.length();
+        int[] dp = new int[n + 1];
+
+        dp[0] = 1;
+
+        for(int i = 1; i <= n; i++) {
+            long cnt = 0;
+            if(s.charAt(i - 1) != '0') {
+                cnt = dp[i - 1];
+            }
+
+            for(int j = 1; j <= 9; j++) {
+                if(i - 1 - j >= 0 && isValid(s, k, i - 1, j)) {
+                    cnt = (cnt + dp[i - 1 - j]) % MOD;
+                }
+            }
+            dp[i] = (int)cnt;
+        }
+        return dp[n];
+    }
+
+    private int topDownSol(String s, int k) {
         return dfs(s, k, 0, 0, new Integer[s.length()][11]);
     }
 
@@ -46,6 +78,10 @@ public class Q1416 {
 
     private boolean isValid(String s, int k, int curr, int preLen) {
         if(preLen >= 10) {
+            return false;
+        }
+
+        if(s.charAt(curr - preLen) == '0') {
             return false;
         }
 
