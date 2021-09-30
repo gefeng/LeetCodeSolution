@@ -17,6 +17,46 @@ public class Q1420 {
      * */
     private static final int MOD = (int)1e9 + 7;
     public int numOfArrays(int n, int m, int k) {
+        return bottomUpSol(n, m, k);
+    }
+    
+    /**
+     * state:
+     *  dp[i][j][k] denotes number of ways to build array with length i, max element j and search cost k
+     * transition:
+     *  dp[i][j][k] = dp[i - 1][j][k] * j + sum(dp[i - 1][a][k - 1] where a in [1, j - 1])
+     * */
+    private int bottomUpSol(int n, int m, int k) {
+        int[][][] dp = new int[n + 1][m + 1][k + 1];
+        int ans = 0;
+
+        for(int i = 1; i <= m; i++) {
+            dp[1][i][1] = 1;
+        }
+
+        for(int i = 2; i <= n; i++) {
+            for(int j = 1; j <= m; j++) {
+                for(int l = 1; l <= k; l++) {
+                    long res = 0;
+
+                    res = ((long)dp[i - 1][j][l] * j) % MOD;
+
+                    for(int a = 1; a < j; a++) {
+                        res = (res + dp[i - 1][a][l - 1]) % MOD;
+                    }
+
+                    dp[i][j][l] = (int)(res % MOD);
+                }
+            }
+        }
+
+        for(int i = 1; i <= m; i++) {
+            ans = (ans + dp[n][i][k]) % MOD;
+        }
+        return ans;
+    }
+
+    private int topDownSol(int n, int m, int k) {
         return dfs(n, m, 0, k, 0, new Integer[n][k + 1][101]);
     }
 
