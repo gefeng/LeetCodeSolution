@@ -11,6 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/number-of-ways-to-paint-n-3-grid/"
 )
 public class Q1411 {
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     private static final int MOD = (int)1e9 + 7;
     public int numOfWays(int n) {
         return mathSol(n);
