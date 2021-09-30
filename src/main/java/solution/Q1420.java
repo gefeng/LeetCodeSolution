@@ -19,7 +19,7 @@ public class Q1420 {
     public int numOfArrays(int n, int m, int k) {
         return bottomUpSol(n, m, k);
     }
-    
+
     /**
      * state:
      *  dp[i][j][k] denotes number of ways to build array with length i, max element j and search cost k
