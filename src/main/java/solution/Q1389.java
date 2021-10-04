@@ -11,6 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/create-target-array-in-the-given-order/"
 )
 public class Q1389 {
+    /**
+     * Time:  O(N ^ 2)
+     * Space: O(N)
+     * */
     public int[] createTargetArray(int[] nums, int[] index) {
         int[] retVal = new int[nums.length];
         for(int i = 0; i < nums.length; ++i) {
