@@ -12,6 +12,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/maximum-sum-bst-in-binary-tree/"
 )
 public class Q1373 {
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     private class Info {
         int min;
         int max;

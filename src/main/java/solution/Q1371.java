@@ -24,6 +24,10 @@ public class Q1371 {
         0: means char appears even times
         1: means char apperas odd  times
     */
+    /**
+     * Time:  O(N)
+     * Space: O(1)
+     * */
     public int findTheLongestSubstring(String s) {
         int n = s.length();
         int max = 0;
