@@ -14,6 +14,10 @@ import java.util.PriorityQueue;
         url = "https://leetcode.com/problems/maximum-performance-of-a-team/"
 )
 public class Q1383 {
+    /**
+     * Time:  O(N * logN)
+     * Space: O(N)
+     * */
     private static final int MOD = (int)1e9 + 7;
     public int maxPerformance(int n, int[] speed, int[] efficiency, int k) {
         int[][] pairs = new int[n][2];
