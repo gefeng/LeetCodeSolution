@@ -13,67 +13,44 @@ import java.util.*;
         url = "https://leetcode.com/problems/maximum-number-of-ways-to-partition-an-array/"
 )
 public class Q2025 {
-    public int waysToPartition(int[] nums, int k) {
-        int n = nums.length;
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
+    public int wasdaysToPartition(int[] nums, int k) {
         int ans = 0;
-        //int[] preSum = new int[n + 1];
-        Map<Integer, List<Integer>> lMap = new HashMap<>();
-        Map<Integer, List<Integer>> rMap = new HashMap<>();
+        int n = nums.length;
+        Map<Integer, Integer> rMap = new HashMap<>();
+        Map<Integer, Integer> lMap = new HashMap<>();
 
         int sum = 0;
         for(int i = 0; i < n; i++) {
             sum += nums[i];
-            //preSum[i + 1] = preSum[i] + nums[i];
-            lMap.computeIfAbsent(sum, key -> new ArrayList<>()).add(i);
         }
 
-        int temp = sum;
-        for(int i = 0; i < n; i++) {
-            rMap.computeIfAbsent(temp, key -> new ArrayList<>()).add(i);
-            temp -= nums[i];
-            if(i != n - 1 && temp * 2 == sum) {
-                ans++;
-            }
+        int sumL = 0;
+        int sumR = 0;
+        for(int i = 1; i < n; i++) {
+            sumL += nums[i - 1];
+            sumR = sum - sumL;
+            rMap.put(sumL - sumR, rMap.getOrDefault(sumL - sumR, 0) + 1);
         }
-        //System.out.println(ans + " " + sum);
+
+        ans = rMap.getOrDefault(0, 0);
+
+        sumL = 0;
+        sumR = 0;
         for(int i = 0; i < n; i++) {
-            int diff = k - nums[i];
-            int nSum = sum + diff;
+            int d = k - nums[i];
+            ans += lMap.getOrDefault(d, 0);
+            ans += rMap.getOrDefault(-d, 0);
 
-            if(nSum % 2 != 0) {
-                continue;
-            }
+            sumL += nums[i];
+            sumR = sum - sumL;
+            lMap.put(sumL - sumR, lMap.getOrDefault(sumL - sumR, 0) + 1);
+            rMap.put(sumL - sumR, rMap.getOrDefault(sumL - sumR, 0) - 1);
 
-            List<Integer> l1 = lMap.get(nSum / 2);
-            List<Integer> l2 = rMap.get(nSum / 2);
-
-            int cnt = 0;
-            if(l1 != null) {
-                int idx = Collections.binarySearch(l1, i);
-                if(idx < 0) {
-                    idx = -idx - 1;
-                }
-                idx--;
-                if(idx >= 0) {
-                    cnt += idx + 1;
-                }
-            }
-
-            if(l2 != null) {
-                int idx = Collections.binarySearch(l2, i);
-                //System.out.println(i + " " + idx);
-                if(idx < 0) {
-                    idx = -idx - 1;
-                } else {
-                    idx++;
-                }
-                if(idx <= n) {
-                    cnt += l2.size() - idx;
-                }
-
-            }
-            //System.out.println(i + " " + cnt);
-            ans = Math.max(ans, cnt);
+            sumL += nums[i];
         }
 
         return ans;
