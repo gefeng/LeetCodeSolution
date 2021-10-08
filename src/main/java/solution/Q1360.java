@@ -14,6 +14,10 @@ public class Q1360 {
     /*
     * leap year
     * */
+    /**
+     * Time:  O(N)
+     * Space: O(1)
+     * */
     public int daysBetweenDates(String date1, String date2) {
         return Math.abs(getDays(date1) - getDays(date2));
     }
