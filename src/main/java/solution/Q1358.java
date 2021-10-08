@@ -11,6 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/"
 )
 public class Q1358 {
+    /**
+     * Time:  O(N)
+     * Space: O(1)
+     * */
     public int numberOfSubstrings(String s) {
         return miniField(s);
     }
