@@ -13,6 +13,10 @@ import java.util.PriorityQueue;
         url = "https://leetcode.com/problems/construct-target-array-with-multiple-sums/"
 )
 public class Q1354 {
+    /**
+     * Time:  O(N * logN)
+     * Space: O(N * logN)
+     * */
     public boolean isPossible(int[] target) {
         if(target.length == 1) {
             return target[0] == 1;
