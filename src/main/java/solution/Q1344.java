@@ -11,6 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/angle-between-hands-of-a-clock/"
 )
 public class Q1344 {
+    /**
+     * Time:  O(1)
+     * Space: O(1)
+     * */
     public double angleClock(int hour, int minutes) {
         int oneHourAngle = 30;
         int oneMinuteAngle = 6;
