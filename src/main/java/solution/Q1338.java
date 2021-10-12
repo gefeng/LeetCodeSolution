@@ -14,6 +14,10 @@ import java.util.Queue;
         url = "https://leetcode.com/problems/reduce-array-size-to-the-half/"
 )
 public class Q1338 {
+    /**
+     * Time:  O(N * logN)
+     * Space: O(N)
+     * */
     public int minSetSize(int[] arr) {
         int n = arr.length / 2;
         int[] cnt = new int[100001];
