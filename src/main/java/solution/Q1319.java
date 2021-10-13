@@ -13,6 +13,10 @@ import java.util.*;
         url = "https://leetcode.com/problems/number-of-operations-to-make-network-connected/"
 )
 public class Q1319 {
+    /**
+     * Time:  O(E + V)
+     * Space: O(E + V)
+     * */
     public int makeConnected(int n, int[][] connections) {
         return unionFindSolution(n, connections);
     }
