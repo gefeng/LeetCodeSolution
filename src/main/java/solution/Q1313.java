@@ -11,6 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/decompress-run-length-encoded-list/"
 )
 public class Q1313 {
+    /**
+     * Time:  O(N * F)
+     * Space: O(N * F)
+     * */
     public int[] decompressRLElist(int[] nums) {
         int length = 0;
         for(int i = 0; i < nums.length - 1; i+=2) {

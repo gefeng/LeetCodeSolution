@@ -13,7 +13,7 @@ import enums.QTag;
 public class Q1326 {
     /**
      * Convert to jump game and apply greedy
-     * 
+     *
      * Time:  O(N)
      * Space: O(N)
      * */

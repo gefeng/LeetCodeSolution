@@ -11,6 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/matrix-block-sum/"
 )
 public class Q1314 {
+    /**
+     * Time:  O(M * N)
+     * Space: O(M * N)
+     * */
     public int[][] matrixBlockSum(int[][] mat, int k) {
         int m = mat.length;
         int n = mat[0].length;
