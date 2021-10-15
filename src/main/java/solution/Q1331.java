@@ -14,6 +14,10 @@ import java.util.HashMap;
         url = "https://leetcode.com/problems/rank-transform-of-an-array/"
 )
 public class Q1331 {
+    /**
+     * Time:  O(N * logN)
+     * Space: O(N)
+     * */
     public int[] arrayRankTransform(int[] arr) {
         int len = arr.length;
         int[] copy = Arrays.copyOfRange(arr, 0, len);
