@@ -14,77 +14,45 @@ import java.util.*;
 )
 public class Q1298 {
     /**
-     * Time:  O(V * (E + V))
-     * Space: O(E + V)
+     * Time:  O(N)
+     * Space: O(N)
      * */
-    private int n;
-    private List<Integer>[] adj;
-    private int[] sta;
-    private int[] can;
-    private int[] ini;
-    private Set<Integer>[] key;
-    private Set<Integer> have;
     public int maxCandies(int[] status, int[] candies, int[][] keys, int[][] containedBoxes, int[] initialBoxes) {
         int ans = 0;
-        this.n = status.length;
-        this.sta = status;
-        this.can = candies;
-        this.ini = initialBoxes;
-        this.key = new Set[n];
-        adj = new List[n];
-        have = new HashSet<>();
-
-        for(int i = 0; i < n; i++) {
-            adj[i] = new ArrayList<>();
-            for(int b : containedBoxes[i]) {
-                adj[i].add(b);
-            }
-
-            key[i] = new HashSet<>();
-            for(int k : keys[i]) {
-                key[i].add(k);
-            }
-        }
-
-        for(int i = 0; i < n; i++) {
-            ans += bfs();
-        }
-
-        return ans;
-    }
-
-    private int bfs() {
-        int res = 0;
+        int n = status.length;
+        boolean[] got = new boolean[n];
+        boolean[] taken = new boolean[n];
         Queue<Integer> q = new ArrayDeque<>();
-        boolean[] visited = new boolean[n];
 
-        for(int b : ini) {
-            if(sta[b] == 1 || have.contains(b)) {
+        for(int b : initialBoxes) {
+            if(status[b] == 1) {
                 q.offer(b);
-                visited[b] = true;
+                taken[b] = true;
             }
+            got[b] = true;
         }
 
         while(!q.isEmpty()) {
             int cur = q.poll();
+            ans += candies[cur];
 
-            res += can[cur];
-            can[cur] = 0;
-
-            for(int k : key[cur]) {
-                have.add(k);
+            for(int k : keys[cur]) {
+                status[k] = 1;
+                if(got[k] && !taken[k]) {
+                    q.offer(k);
+                    taken[k] = true;
+                }
             }
 
-            key[cur].clear();
-
-            for(int nei : adj[cur]) {
-                if(sta[nei] == 1 || have.contains(nei)) {
-                    q.offer(nei);
-                    visited[nei] = true;
+            for(int cb : containedBoxes[cur]) {
+                got[cb] = true;
+                if(status[cb] == 1 && !taken[cb]) {
+                    q.offer(cb);
+                    taken[cb] = true;
                 }
             }
         }
 
-        return res;
+        return ans;
     }
 }
