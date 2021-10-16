@@ -11,6 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/replace-elements-with-greatest-element-on-right-side/"
 )
 public class Q1299 {
+    /**
+     * Time:  O(N)
+     * Space: O(1)
+     * */
     public int[] replaceElements(int[] arr) {
         int max = -1;
         for(int i = arr.length - 1; i >= 0; i--) {
