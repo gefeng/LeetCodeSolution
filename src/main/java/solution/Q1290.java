@@ -12,6 +12,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer/"
 )
 public class Q1290 {
+    /**
+     * Time:  O(N)
+     * Space: O(1)
+     * */
     public int getDecimalValue(ListNode head) {
         int retVal = 0;
         ListNode cNode = head;

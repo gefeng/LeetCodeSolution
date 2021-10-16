@@ -45,4 +45,5 @@ public enum QTag {
     SUFFIX_ARRAY,
     MATRIX,
     PREFIX_SUM,
+    ENUMERATION,
 }
