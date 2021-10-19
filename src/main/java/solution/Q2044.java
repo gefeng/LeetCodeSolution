@@ -18,34 +18,25 @@ public class Q2044 {
      * Time:  O(2 ^ N)
      * Space: O(2 ^ N)
      * */
-    Map<Integer, Integer> freqMap = new HashMap<>();
     public int countMaxOrSubsets(int[] nums) {
-        dfs(nums, 0, 0);
-
+        int n = nums.length;
         int max = 0;
-        for(int key : freqMap.keySet()) {
-            max = Math.max(max, key);
-        }
-
-        return freqMap.get(max);
-    }
-
-    private void dfs(int[] nums, int cur, int mask) {
-        if(cur == nums.length) {
-            if(mask != 0) {
-                int sum = 0;
-                for(int i = 0; i < nums.length; i++) {
-                    if(((1 << i) & mask) != 0) {
-                        sum |= nums[i];
-                    }
+        int ans = 0;
+        for(int i = 1; i < (1 << n); i++) {
+            int or = 0;
+            for(int j = 0; j < n; j++) {
+                if(((1 << j) & i) != 0) {
+                    or |= nums[j];
                 }
-                freqMap.put(sum, freqMap.getOrDefault(sum, 0) + 1);
             }
-
-            return;
+            if(or == max) {
+                ans++;
+            } else if(or > max) {
+                ans = 1;
+                max = or;
+            }
         }
 
-        dfs(nums, cur + 1, mask);
-        dfs(nums, cur + 1, mask | (1 << cur));
+        return ans;
     }
 }
