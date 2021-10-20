@@ -16,6 +16,10 @@ import java.util.List;
         url = "https://leetcode.com/problems/search-suggestions-system/"
 )
 public class Q1268 {
+    /**
+     * Time:  O(N * L)
+     * Space: O(N * L)
+     * */
     private class TrieNode {
         HashMap<Character, TrieNode> children = new HashMap<>();
         String word = null;
