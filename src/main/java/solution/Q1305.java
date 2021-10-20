@@ -15,6 +15,10 @@ import java.util.List;
         url = "https://leetcode.com/problems/all-elements-in-two-binary-search-trees/"
 )
 public class Q1305 {
+    /**
+     * Time:  O(M + N)
+     * Space: O(M + N)
+     * */
     public List<Integer> getAllElements(TreeNode root1, TreeNode root2) {
         List<Integer> l1 = new ArrayList<>();
         List<Integer> l2 = new ArrayList<>();

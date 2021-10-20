@@ -14,6 +14,10 @@ import java.util.List;
         url = "https://leetcode.com/problems/iterator-for-combination/"
 )
 public class Q1286 {
+    /**
+     * Time:  O(2 ^ N * N)
+     * Space: O(2 ^ N)
+     * */
     String s;
     int len;
     List<String> combinations;
