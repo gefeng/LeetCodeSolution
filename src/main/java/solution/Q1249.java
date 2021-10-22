@@ -15,6 +15,10 @@ import java.util.Stack;
         url = "https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/"
 )
 public class Q1249 {
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     public String minRemoveToMakeValid(String s) {
         Stack<Integer> stack = new Stack<>();
         Set<Integer> toRemove = new HashSet<>();

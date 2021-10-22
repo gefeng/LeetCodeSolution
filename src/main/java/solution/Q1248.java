@@ -11,6 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/count-number-of-nice-subarrays/"
 )
 public class Q1248 {
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     public int numberOfSubarrays(int[] nums, int k) {
         return onePass(nums, k);
     }
