@@ -18,6 +18,10 @@ public class Q1245 {
     * 泛化的求tree的diameter.
     * 给定一个node，找到最长和第二长的两条以当前node为root的path，两者和为可能的最大直径.
     * */
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     public int treeDiameter(int[][] edges) {
         if(edges.length == 0) {
             return 0;
