@@ -17,6 +17,8 @@ import java.util.Queue;
 )
 public class Q2050 {
     /**
+     * Save maximum time needed before start the current course.
+     * 
      * Time:  O(N)
      * Space: O(N)
      * */
