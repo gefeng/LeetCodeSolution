@@ -16,6 +16,10 @@ import java.util.Map;
         url = "https://leetcode.com/problems/smallest-string-with-swaps/"
 )
 public class Q1202 {
+    /**
+     * Time:  O(M + N)
+     * Space: O(N)
+     * */
     private class DisjointSet {
         private int[] parent;
         private int[] weight;
