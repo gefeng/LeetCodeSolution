@@ -21,6 +21,10 @@ public class Q1220 {
                  = if j = 3 then dp[i - 1][2]
                  = if j = 4 then dp[i - 1][2] + dp[i - 1][3]
     */
+    /**
+     * Time:  O(N)
+     * Space: O(1)
+     * */
     private static final int MOD = (int)1e9 + 7;
     public int countVowelPermutation(int n) {
         int[] dp = new int[5];
