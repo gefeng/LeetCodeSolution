@@ -6,6 +6,7 @@ import enums.QDifficulty;
 import enums.QTag;
 
 import java.util.HashSet;
+import java.util.Set;
 import java.util.Stack;
 
 @Problem(
@@ -15,58 +16,32 @@ import java.util.Stack;
         url = "https://leetcode.com/problems/two-sum-bsts/"
 )
 public class Q1214 {
+    /**
+     * Time:  O(N + M)
+     * Space: O(N)
+     * */
     public boolean twoSumBSTs(TreeNode root1, TreeNode root2, int target) {
-        HashSet<Integer> set = new HashSet<>();
-        buildSet(root1, set);
-        return search(root2, set, target);
+        Set<Integer> set = new HashSet<>();
+        dfs1(root1, set);
+
+        return dfs2(root2, set, target);
     }
 
-    private void buildSet(TreeNode root, HashSet<Integer> set) {
-        if(root == null)
+    private void dfs1(TreeNode root, Set<Integer> set) {
+        if(root == null) {
             return;
+        }
 
         set.add(root.val);
-        buildSet(root.left, set);
-        buildSet(root.right, set);
+        dfs1(root.left, set);
+        dfs1(root.right, set);
     }
 
-    private boolean search(TreeNode root, HashSet<Integer> set, int target) {
-        if(root == null)
+    private boolean dfs2(TreeNode root, Set<Integer> set, int t) {
+        if(root == null) {
             return false;
-        if(set.contains(target - root.val))
-            return true;
-        return search(root.left, set, target) || search(root.right, set, target);
-    }
-
-    private boolean iterativeInorderTraversal(TreeNode root1, TreeNode root2, int target) {
-        if(root1 == null || root2 == null)
-            return false;
-
-        HashSet<Integer> set = new HashSet<>();
-        Stack<TreeNode> stack = new Stack<>();
-        TreeNode curr = root1;
-        while(!stack.isEmpty() || curr != null) {
-            while(curr != null) {
-                stack.push(curr);
-                curr = curr.left;
-            }
-            curr = stack.pop();
-            set.add(curr.val);
-            curr = curr.right;
         }
 
-        curr = root2;
-        while(!stack.isEmpty() || curr != null) {
-            while(curr != null) {
-                stack.push(curr);
-                curr = curr.left;
-            }
-            curr = stack.pop();
-            if(set.contains(target - curr.val))
-                return true;
-            curr = curr.right;
-        }
-
-        return false;
+        return set.contains(t - root.val) || dfs2(root.left, set, t) || dfs2(root.right, set, t);
     }
 }
