@@ -19,6 +19,10 @@ public class Q1197 {
 
         -302 - 302
     */
+    /**
+     * Time:  O(N ^ 2)
+     * Space: O(N ^ 2)
+     * */
     private static final int[][] DIRECTIONS = {{-2, -1},{-2, 1},{2, -1},{2, 1},
             {-1, -2},{1, -2},{-1, 2},{1, 2}};
     private int m = 605;
