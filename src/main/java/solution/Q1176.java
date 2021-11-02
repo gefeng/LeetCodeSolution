@@ -11,6 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/diet-plan-performance/"
 )
 public class Q1176 {
+    /**
+     * Time:  O(N)
+     * Space: O(1)
+     * */
     public int dietPlanPerformance(int[] calories, int k, int lower, int upper) {
         int points = 0;
         int sum = 0;
