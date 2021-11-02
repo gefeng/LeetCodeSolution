@@ -15,6 +15,10 @@ import java.util.List;
         url = "https://leetcode.com/problems/shortest-distance-to-target-color/"
 )
 public class Q1182 {
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     public List<Integer> shortestDistanceColor(int[] colors, int[][] queries) {
         int n = colors.length;
         int[][] closeColors = new int[n][3];
