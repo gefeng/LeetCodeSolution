@@ -11,6 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/find-words-that-can-be-formed-by-characters/"
 )
 public class Q1160 {
+    /**
+     * Time:  O(N * L)
+     * Space: O(1)
+     * */
     public int countCharacters(String[] words, String chars) {
         int ans = 0;
         int[] lookup = new int[26];
