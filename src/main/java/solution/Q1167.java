@@ -13,6 +13,10 @@ import java.util.PriorityQueue;
         url = "https://leetcode.com/problems/minimum-cost-to-connect-sticks/"
 )
 public class Q1167 {
+    /**
+     * Time:  O(N * logN)
+     * Space: O(N)
+     * */
     public int connectSticks(int[] sticks) {
         int cost = 0;
         PriorityQueue<Integer> pQueue = new PriorityQueue<>();
