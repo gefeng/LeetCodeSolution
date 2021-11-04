@@ -5,6 +5,9 @@ import data_structure.ListNode;
 import enums.QDifficulty;
 import enums.QTag;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Problem(
         title = "Remove Zero Sum Consecutive Nodes from Linked List",
         difficulty = QDifficulty.MEDIUM,
@@ -13,34 +16,26 @@ import enums.QTag;
 )
 public class Q1171 {
     /**
-     * Time:  O(N ^ 2)
-     * Space: O(1)
+     * Time:  O(N)
+     * Space: O(N)
      * */
     public ListNode removeZeroSumSublists(ListNode head) {
+        Map<Integer, ListNode> map = new HashMap<>();
         ListNode dh = new ListNode(0, head);
 
-        ListNode p1 = dh;
+        map.put(0, dh);
+        int sum = 0;
+        for(ListNode cur = head; cur != null; cur = cur.next) {
+            sum += cur.val;
+            map.put(sum, cur);
+        }
 
-        while(p1 != null) {
-            ListNode p2 = p1.next;
-            int sum = 0;
-            boolean delete = false;
-            while(p2 != null) {
-                sum += p2.val;
-
-                if(sum == 0) {
-                    p1.next = p2.next;
-                    delete = true;
-                    break;
-                }
-
-                p2 = p2.next;
+        sum = 0;
+        for(ListNode cur = dh; cur != null; cur = cur.next) {
+            sum += cur.val;
+            if(map.containsKey(sum)) {
+                cur.next = map.get(sum).next;
             }
-
-            if(!delete) {
-                p1 = p1.next;
-            }
-
         }
 
         return dh.next;
