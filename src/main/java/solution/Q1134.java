@@ -14,6 +14,10 @@ import java.util.List;
         url = "https://leetcode.com/problems/armstrong-number/"
 )
 public class Q1134 {
+    /**
+     * Time:  O(1)
+     * Space: O(1)
+     * */
     public boolean isArmstrong(int n) {
         List<Integer> digits = getDigits(n);
         int k = digits.size();
