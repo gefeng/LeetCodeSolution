@@ -12,7 +12,8 @@ import enums.QTag;
 )
 public class Q2063 {
     /**
-     *
+     * For each vowel character it could be within a substring [s[x], s[y]].
+     * There are i + 1 choices for position x and n - i choices for y.
      *
      * Time:  O(N)
      * Space: O(1)
