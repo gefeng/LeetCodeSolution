@@ -18,6 +18,10 @@ public class Q1130 {
         return stackSolution(arr);
     }
 
+    /**
+     * Time:  O(N ^ 3)
+     * Space: O(N ^ 2)
+     * */
     /*
         state:
             dp[i][j] means min sum of subarray s[i, j]
@@ -51,6 +55,10 @@ public class Q1130 {
         return dp[0][n - 1];
     }
 
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     private int stackSolution(int[] arr) {
         Deque<Integer> stack = new ArrayDeque<>();
         stack.push(Integer.MAX_VALUE);
