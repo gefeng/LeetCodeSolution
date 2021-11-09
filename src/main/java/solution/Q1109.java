@@ -18,7 +18,7 @@ public class Q1109 {
      * 1. for each triplet [i, j, k]  increase booking[i] by k and decrease booking[j + 1] by -k
      * 2. sweep line and accumulate total bookings
      *
-     * Time:  O(N * logN)
+     * Time:  O(N)
      * Space: O(N)
      * */
     public int[] corpFlightBookings(int[][] bookings, int n) {

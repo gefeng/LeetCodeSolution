@@ -11,6 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/defanging-an-ip-address/"
 )
 public class Q1108 {
+    /**
+     * Time:  O(1)
+     * Space: O(1)
+     * */
     public String defangIPaddr(String address) {
         StringBuilder ipBuilder = new StringBuilder();
         for(int i = 0; i < address.length(); i++) {
