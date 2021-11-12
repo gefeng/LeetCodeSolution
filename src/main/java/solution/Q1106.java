@@ -17,7 +17,7 @@ public class Q1106 {
     /**
      * Polish notation is easy to solve by stack. Just push everything onto stack until hit ')'.
      * Then pop until finding a operator. Since it's boolean operations we just need to count
-     * how many 'f' and 't' we get. 
+     * how many 'f' and 't' we get.
      *
      * Time:  O(N)
      * Space: O(N)
