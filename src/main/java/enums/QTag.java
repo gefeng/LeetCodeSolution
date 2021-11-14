@@ -46,4 +46,5 @@ public enum QTag {
     MATRIX,
     PREFIX_SUM,
     ENUMERATION,
+    SIMULATION,
 }
