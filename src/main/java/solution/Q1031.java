@@ -11,6 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/maximum-sum-of-two-non-overlapping-subarrays/"
 )
 public class Q1031 {
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     public int maxSumTwoNoOverlap(int[] A, int L, int M) {
         int n = A.length;
         if(n == 0)
