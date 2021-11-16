@@ -14,6 +14,10 @@ import java.util.Deque;
         url = "https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/"
 )
 public class Q1047 {
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     public String removeDuplicates(String s) {
         int n = s.length();
         Deque<Character> deque = new ArrayDeque<>();

@@ -14,6 +14,10 @@ import java.util.Set;
         url = "https://leetcode.com/problems/longest-duplicate-substring/"
 )
 public class Q1044 {
+    /**
+     * Time:  O(N * logN)
+     * Space: O(N)
+     * */
     /*
     * we should check collision in real life.
     * Modulus won't solve collision eventually.
