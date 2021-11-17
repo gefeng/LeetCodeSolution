@@ -5,6 +5,7 @@ import enums.QDifficulty;
 import enums.QTag;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 @Problem(
         title = "Video Stitching",
@@ -14,7 +15,7 @@ import java.util.Arrays;
 )
 public class Q1024 {
     public int videoStitching(int[][] clips, int T) {
-        Arrays.sort(clips, (a, b) -> Integer.compare(a[0], b[0]));
+        Arrays.sort(clips, Comparator.comparingInt(a -> a[0]));
 
         int count = 0;
         int end = 0;

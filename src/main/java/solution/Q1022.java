@@ -14,6 +14,10 @@ import java.util.Stack;
         url = "https://leetcode.com/problems/sum-of-root-to-leaf-binary-numbers/"
 )
 public class Q1022 {
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     int sum = 0;
     public int sumRootToLeaf(TreeNode root) {
         preorder(root, 0);

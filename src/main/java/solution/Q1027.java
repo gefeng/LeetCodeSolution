@@ -11,6 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/longest-arithmetic-subsequence/"
 )
 public class Q1027 {
+    /**
+     * Time:  O(N ^ 2)
+     * Space: O(N)
+     * */
     /*
         dp[i][j]  the longest arithmetic subsequence at index i with difference j
         range of difference: -500 - 500

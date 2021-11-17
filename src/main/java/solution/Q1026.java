@@ -12,6 +12,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/maximum-difference-between-node-and-ancestor/"
 )
 public class Q1026 {
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     /*
     * keep passing current max and min to children.
     * update max, min comparing to current root value.
