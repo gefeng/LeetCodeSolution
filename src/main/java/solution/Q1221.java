@@ -11,7 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/split-a-string-in-balanced-strings/"
 )
 public class Q1221 {
-    /*这题注意可以用一个count加减1代替两个，代码更简洁*/
+    /**
+     * Time:  O(N)
+     * Space: O(1)
+     * */
     public int balancedStringSplit(String s) {
         int count = 0;
         int amount = 0;
