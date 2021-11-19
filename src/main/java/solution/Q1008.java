@@ -16,25 +16,37 @@ import java.util.Queue;
         url = "https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/"
 )
 public class Q1008 {
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
+    int[] v;
+    int pos;
+    int len;
     public TreeNode bstFromPreorder(int[] preorder) {
-        Queue<Integer> queue = new ArrayDeque<>();
-        for(int val : preorder)
-            queue.offer(val);
-        return recover(preorder, Integer.MIN_VALUE, Integer.MAX_VALUE, queue);
+        v = preorder;
+        pos = 0;
+        len = v.length;
+
+        return dfs(Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 
-    private TreeNode recover(int[] preorder, int floor, int ceiling, Queue<Integer> queue) {
-        if(queue.isEmpty())
+    private TreeNode dfs(int lb, int ub) {
+        if(pos == len) {
             return null;
+        }
 
-        int val = queue.peek();
-        if(val <= floor || val >= ceiling)
+        int val = v[pos];
+        if(val < lb || val > ub) {
             return null;
+        }
 
-        queue.poll();
-        TreeNode node = new TreeNode(val);
-        node.left = recover(preorder, floor, node.val, queue);
-        node.right = recover(preorder, node.val, ceiling, queue);
-        return node;
+        pos++;
+
+        TreeNode root = new TreeNode(val);
+        root.left = dfs(lb, val);
+        root.right = dfs(val, ub);
+
+        return root;
     }
 }

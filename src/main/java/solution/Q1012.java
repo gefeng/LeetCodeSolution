@@ -13,6 +13,7 @@ import enums.QTag;
 public class Q1012 {
     /**
      * Digit DP
+     * Actually could be solved by finding no repeat integer then n - x is the answer which should be easier.
      *
      * Time:  O(1)
      * Space: O(1)
