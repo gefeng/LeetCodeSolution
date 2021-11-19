@@ -11,6 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/pairs-of-songs-with-total-durations-divisible-by-60/"
 )
 public class Q1010 {
+    /**
+     * Time:  O(N)
+     * Space: O(1)
+     * */
     /*
     * two sum hidden
     * tricky is map all the number to 0-59;
