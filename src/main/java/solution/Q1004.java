@@ -11,6 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/max-consecutive-ones-iii/"
 )
 public class Q1004 {
+    /**
+     * Time:  O(N)
+     * Space: O(1)
+     * */
     public int longestOnes(int[] A, int K) {
         int max = 0;
         int countFlip = 0;
