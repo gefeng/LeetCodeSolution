@@ -12,6 +12,8 @@ import enums.QTag;
 )
 public class Q2081 {
     /**
+     * The time complexity should be more tight by only generating n smallest numbers.
+     *
      * Time:  O(10 ^ N)
      * Space: O(N)
      * */
@@ -21,14 +23,14 @@ public class Q2081 {
         this.n = n;
 
         for(int i = 1; this.n > 0; i++) {
-            dfs1(i, 0, 0, 0, 1, k);
+            dfs(i, 0, 0, 0, 1, k);
         }
 
 
         return ans;
     }
 
-    private void dfs1(int len, int cur, long l, long r, long d, int k) {
+    private void dfs(int len, int cur, long l, long r, long d, int k) {
         if(n == 0) {
             return;
         }
@@ -56,7 +58,7 @@ public class Q2081 {
 
         int st = cur == 0 ? 1 : 0;
         for(int i = st; i < 10; i++) {
-            dfs1(len, cur + 1, l * 10 + i, i * d + r, d * 10, k);
+            dfs(len, cur + 1, l * 10 + i, i * d + r, d * 10, k);
         }
     }
 
