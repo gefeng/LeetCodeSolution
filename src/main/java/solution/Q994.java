@@ -14,6 +14,10 @@ import java.util.Queue;
         url = "https://leetcode.com/problems/rotting-oranges/"
 )
 public class Q994 {
+    /**
+     * Time:  O(M * N)
+     * Space: O(M * N)
+     * */
     public int orangesRotting(int[][] grid) {
         int[][] directions = new int[][] { {1, 0}, {-1, 0}, {0, 1}, {0, -1} };
         Queue<int[]> queue = new LinkedList<>();
