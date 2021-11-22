@@ -11,7 +11,7 @@ import java.util.List;
 
 @Problem(
         title = "Vertical Order Traversal of a Binary Tree",
-        difficulty = QDifficulty.MEDIUM,
+        difficulty = QDifficulty.HARD,
         tag = QTag.TREE,
         url = "https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/"
 )
