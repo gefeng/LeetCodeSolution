@@ -14,6 +14,10 @@ import java.util.Set;
         url = "https://leetcode.com/problems/unique-paths-iii/"
 )
 public class Q980 {
+    /**
+     * Time:  O(3 ^ (M * N))
+     * Space: O(M * N)
+     * */
     private int[][] directions = new int[][] {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
     int gridSize = 0;
     int numOfObstacles = 0;
