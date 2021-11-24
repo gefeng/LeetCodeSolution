@@ -27,6 +27,10 @@ public class Q968 {
             s[1] = 0
             s[2] = 0
     */
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     private static final int MAX = 1001;
     public int minCameraCover(TreeNode root) {
         int[] s = helper(root);

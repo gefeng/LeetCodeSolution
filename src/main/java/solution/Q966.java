@@ -18,6 +18,10 @@ public class Q966 {
     * smart way to generate the vowels match map,
     * i.e. apple -> key: *ppl*
     * */
+    /**
+     * Time:  O(M * L + N * L)
+     * Space: O(M * L + N * L)
+     * */
     public String[] spellchecker(String[] wordlist, String[] queries) {
         HashSet<String> exaSet = new HashSet<>();
         HashMap<String, String> capMap = new HashMap<>();

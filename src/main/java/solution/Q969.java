@@ -14,6 +14,10 @@ import java.util.List;
         url = "https://leetcode.com/problems/pancake-sorting/"
 )
 public class Q969 {
+    /**
+     * Time:  O(N ^ 2)
+     * Space: O(N)
+     * */
     public List<Integer> pancakeSort(int[] A) {
         List<Integer> ans = new ArrayList<>();
         for(int i = A.length - 1; i >= 0; i--) {

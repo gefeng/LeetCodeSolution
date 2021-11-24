@@ -14,6 +14,10 @@ import java.util.List;
         url = "https://leetcode.com/problems/numbers-with-same-consecutive-differences/"
 )
 public class Q967 {
+    /**
+     * Time:  O(2 ^ 10)
+     * Space: O(2 ^ 10)
+     * */
     List<Integer> nums = new ArrayList<>();
     public int[] numsSameConsecDiff(int N, int K) {
         for(int i = 0; i < 10; i++) {
