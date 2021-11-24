@@ -19,6 +19,10 @@ public class Q958 {
         left justified
         as soon as find a null child, stop enqueue. If enqueue happens, return false
     */
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     public boolean isCompleteTree(TreeNode root) {
         if(root == null)
             return true;

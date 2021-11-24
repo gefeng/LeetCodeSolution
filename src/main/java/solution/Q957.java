@@ -13,6 +13,10 @@ import java.util.HashMap;
         url = "https://leetcode.com/problems/prison-cells-after-n-days/"
 )
 public class Q957 {
+    /**
+     * Time:  O(prefix + cycle)
+     * Space: O(prefix + cycle)
+     * */
     public int[] prisonAfterNDays(int[] cells, int n) {
         HashMap<Integer, Integer> map = new HashMap<>();
         int cycle = 0;
