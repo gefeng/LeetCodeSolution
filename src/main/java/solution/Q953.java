@@ -13,33 +13,42 @@ import java.util.HashMap;
         url = "https://leetcode.com/problems/verifying-an-alien-dictionary/"
 )
 public class Q953 {
-    /*
-    * string 比较的基本功, 可以用count[26]代替hashmap i.e. count[c - 'a'] = i;
-    * */
+    /**
+     * Time:  O(N * L)
+     * Space: O(1)
+     * */
     public boolean isAlienSorted(String[] words, String order) {
-        HashMap<Character, Integer> dict = new HashMap<>();
-        for(int i = 0; i < order.length(); i++)
-            dict.put(order.charAt(i), i);
-
-        for(int i = 0; i < words.length - 1; i++) {
-            String curr = words[i];
-            String next = words[i + 1];
-            if(compare(curr, next, dict) > 0)
+        int n = words.length;
+        for(int i = 0; i < n - 1; i++) {
+            if(compare(words[i], words[i + 1], order) > 0) {
                 return false;
+            }
         }
-
         return true;
     }
 
-    private int compare(String word1, String word2, HashMap<Character, Integer> dict) {
-        for(int i = 0; i < word1.length() && i < word2.length(); i++) {
-            char c1 = word1.charAt(i);
-            char c2 = word2.charAt(i);
-            int diff = dict.get(c1) - dict.get(c2);
-            if(diff != 0)
-                return diff;
+
+
+    private int compare(String x, String y, String order) {
+        int m = x.length();
+        int n = y.length();
+
+        for(int i = 0; i < m && i < n; i++) {
+            char c1 = x.charAt(i);
+            char c2 = y.charAt(i);
+            if(c1 == c2) {
+                continue;
+            }
+            for(int j = 0; j < 26; j++) {
+                if(c1 == order.charAt(j)) {
+                    return -1;
+                }
+                if(c2 == order.charAt(j)) {
+                    return 1;
+                }
+            }
         }
 
-        return word1.length() - word2.length();
+        return m == n ? 0 : (m > n ? 1 : -1);
     }
 }
