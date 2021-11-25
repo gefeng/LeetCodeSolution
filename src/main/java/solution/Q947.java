@@ -14,66 +14,58 @@ import java.util.Set;
         url = "https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/"
 )
 public class Q947 {
-    public int removeStones(int[][] edges) {
-        return dfsSolution(edges);
-    }
-
-    private int dfsSolution(int[][] stones) {
+    /**
+     * Time:  O(N)
+     * Space: O(max_coordinates)
+     * */
+    public int removeStones(int[][] stones) {
         int ans = 0;
-        int n = stones.length;
-        int groups = 0;
-        boolean[] visited = new boolean[n];
+        DSU dsu = new DSU(20005);
 
-        for(int i = 0; i < n; i++) {
-            if(!visited[i]) {
-                dfs(stones, i, visited);
-                groups++;
+        for(int[] s : stones) {
+            dsu.union(s[0], s[1] + 10001);
+        }
+
+        int[] cnt = new int[20005];
+        for(int[] s : stones) {
+            int x = dsu.find(s[0]);
+            cnt[x]++;
+            if(cnt[x] > 1) {
+                ans++;
             }
         }
 
-        return n - groups;
-    }
-
-    private void dfs(int[][] stones, int currStone, boolean[] visited) {
-        visited[currStone] = true;
-        for(int i = 0; i < stones.length; i++) {
-            if(!visited[i] && (stones[currStone][0] == stones[i][0] || stones[currStone][1] == stones[i][1])) {
-                dfs(stones, i, visited);
-            }
-        }
-    }
-
-    private int unionFindSolution(int[][] stones) {
-        int ans = 0;
-        int n = stones.length;
-        Set<Integer> groups = new HashSet<>();
-        int[] parent = new int[n];
-        for(int i = 0; i < n; i++)
-            parent[i] = i;
-
-        for(int i = 0; i < n; i++) {
-            int[] stoneA = stones[i];
-            for(int j = i; j < n; j++) {
-                int[] stoneB = stones[j];
-                if(stoneA[0] == stoneB[0] || stoneA[1] == stoneB[1]) {
-                    int setA = find(parent, i);
-                    int setB = find(parent, j);
-                    if(setA != setB)
-                        parent[setA] = setB;
-                }
-            }
-        }
-
-        for(int i = 0; i < n; i++)
-            groups.add(find(parent, i));
-
-        ans = n - groups.size();
         return ans;
     }
 
-    private int find(int[] parent, int i) {
-        if(parent[i] != i)
-            parent[i] = find(parent, parent[i]);
-        return parent[i];
+    private class DSU {
+        int[] p;
+        int[] w;
+        DSU(int n) {
+            p = new int[n];
+            w = new int[n];
+            for(int i = 0; i < n; i++) {
+                p[i] = i;
+            }
+        }
+
+        int find(int i) {
+            if(p[i] != i) p[i] = find(p[i]);
+            return p[i];
+        }
+
+        void union(int i, int j) {
+            int x = find(i);
+            int y = find(j);
+            if(x == y) return;
+            if(w[x] == w[y]) {
+                p[y] = x;
+                w[x]++;
+            } else if(w[x] > w[y]) {
+                p[y] = x;
+            } else {
+                p[x] = y;
+            }
+        }
     }
 }
