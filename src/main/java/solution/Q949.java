@@ -6,47 +6,42 @@ import enums.QTag;
 
 @Problem(
         title = "Largest Time for Given Digits",
-        difficulty = QDifficulty.EASY,
+        difficulty = QDifficulty.MEDIUM,
         tag = QTag.MATH,
         url = "https://leetcode.com/problems/largest-time-for-given-digits/"
 )
 public class Q949 {
-    private int maxTime = -1;
-    public String largestTimeFromDigits(int[] A) {
-        backTrack(A, 0);
-        if(maxTime == -1)
-            return "";
+    /**
+     * Time:  O(1)
+     * Space: O(1)
+     * */
+    public String largestTimeFromDigits(int[] arr) {
+        int best = -1;
+        String ans = "";
+        for(int i = 0; i < 4; i++) {
+            for(int j = 0; j < 4; j++) {
+                for(int k = 0; k < 4; k++) {
+                    for(int l = 0; l < 4; l++) {
+                        if(i != j && i != k && i != l && j != k && j != l && k != l) {
+                            int h = arr[i] * 10 + arr[j];
+                            int m = arr[k] * 10 + arr[l];
+                            if(isOk(h, m)) {
+                                int min = h * 60 + m;
+                                if(min > best) {
+                                    best = min;
+                                    ans = String.format("%02d:%02d", h, m);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
-        int hour = maxTime / 60;
-        int minute = maxTime % 60;
-        String hourStr = hour < 10 ? "0" + hour : "" + hour;
-        String minuteStr = minute < 10 ? "0" + minute : "" + minute;
-        return hourStr + ":" + minuteStr;
+        return ans;
     }
 
-    private void backTrack(int[] arr, int start) {
-        if(start == arr.length) {
-            buildTime(arr);
-            return;
-        }
-        for(int i = start; i < arr.length; i++) {
-            swap(arr, start, i);
-            backTrack(arr, start + 1);
-            swap(arr, start, i);
-        }
-    }
-
-    private void swap(int[] arr, int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
-
-    private void buildTime(int[] arr) {
-        int hour = arr[0] * 10 + arr[1];
-        int minute = arr[2] * 10 + arr[3];
-        if(hour < 24 && minute < 60) {
-            maxTime = Math.max(maxTime, hour * 60 + minute);
-        }
+    private boolean isOk(int h, int m) {
+        return h >= 0 && h < 24 && m >= 0 && m < 60;
     }
 }
