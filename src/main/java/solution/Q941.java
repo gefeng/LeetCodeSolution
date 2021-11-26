@@ -11,6 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/valid-mountain-array/"
 )
 public class Q941 {
+    /**
+     * Time:  O(N)
+     * Space: O(1)
+     * */
     public boolean validMountainArray(int[] A) {
         if(A.length < 3)
             return false;
