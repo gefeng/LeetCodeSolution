@@ -13,7 +13,7 @@ import enums.QTag;
 public class Q935 {
     /**
      * Could be simplify since for each cell there are only limited valid move to the next one.
-     * 
+     *
      * Time:  O(N * 10 * 8)
      * Space: O(N * 10)
      * */

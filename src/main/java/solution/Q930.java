@@ -14,6 +14,10 @@ import java.util.Map;
         url = "https://leetcode.com/problems/binary-subarrays-with-sum/"
 )
 public class Q930 {
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     public int numSubarraysWithSum(int[] nums, int goal) {
         return transformToAtMostK(nums, goal);
     }
