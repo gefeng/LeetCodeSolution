@@ -19,6 +19,10 @@ public class Q927 {
          2. the value of each partition should be equal.
          3. each partition should be able to append # (n - 1 - j3) zeros
     */
+    /**
+     * Time:  O(N)
+     * Space: O(1)
+     * */
     public int[] threeEqualParts(int[] arr) {
         int[] ans =  new int[] {-1, -1};
         int n = arr.length;
