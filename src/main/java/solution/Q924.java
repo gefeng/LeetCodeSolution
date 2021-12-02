@@ -8,8 +8,8 @@ import java.util.Arrays;
 
 @Problem(
         title = "Minimize Malware Spread",
-        difficulty = QDifficulty.HARD;
-        tag = QTag.UNION_FIND;
+        difficulty = QDifficulty.HARD,
+        tag = QTag.UNION_FIND,
         url = "https://leetcode.com/problems/minimize-malware-spread/"
 )
 public class Q924 {
