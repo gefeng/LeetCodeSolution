@@ -11,22 +11,27 @@ import enums.QTag;
         url = "https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/"
 )
 public class Q921 {
-    public int minAddToMakeValid(String S) {
-        int countOpen = 0;
-        int countClose = 0;
-        for(int i = 0; i < S.length(); i++) {
-            char c = S.charAt(i);
-            if(c == '(') {
-                countOpen++;
+    /**
+     * Time:  O(N)
+     * Space: O(1)
+     * */
+    public int minAddToMakeValid(String s) {
+        int n = s.length();
+        int cnt = 0;
+        int ans = 0;
+
+        for(int i = 0; i < n; i++) {
+            if(s.charAt(i) == '(') {
+                cnt++;
             } else {
-                if(countOpen == 0) {
-                    countClose++;
+                if(cnt == 0) {
+                    ans++;
                 } else {
-                    countOpen--;
+                    cnt--;
                 }
             }
         }
 
-        return countOpen + countClose;
+        return ans + cnt;
     }
 }
