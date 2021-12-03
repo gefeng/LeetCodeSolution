@@ -47,4 +47,5 @@ public enum QTag {
     PREFIX_SUM,
     ENUMERATION,
     SIMULATION,
+    MONOTONIC_STACK,
 }

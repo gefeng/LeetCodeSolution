@@ -14,6 +14,10 @@ import java.util.Map;
         url = "https://leetcode.com/problems/fruit-into-baskets/"
 )
 public class Q904 {
+    /**
+     * Time:  O(N)
+     * Space: O(1)
+     * */
     public int totalFruit(int[] tree) {
         Map<Integer, Integer> countMap = new HashMap<>();
 

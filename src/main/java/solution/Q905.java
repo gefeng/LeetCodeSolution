@@ -11,6 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/sort-array-by-parity/"
 )
 public class Q905 {
+    /**
+     * Time:  O(N)
+     * Space: O(1)
+     * */
     public int[] sortArrayByParity(int[] A) {
         for(int rPointer = 0, wPointer = 0; rPointer < A.length; rPointer++) {
             if(A[rPointer] % 2 == 0) {
