@@ -14,6 +14,10 @@ import java.util.Queue;
         url = "https://leetcode.com/problems/snakes-and-ladders/"
 )
 public class Q909 {
+    /**
+     * Time:  O(N ^ 2)
+     * Space: O(N ^ 2)
+     * */
     private int N;
     public int snakesAndLadders(int[][] board) {
         N = board.length;
