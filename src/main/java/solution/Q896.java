@@ -11,6 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/monotonic-array/"
 )
 public class Q896 {
+    /**
+     * Time:  O(N)
+     * Space: O(1)
+     * */
     public boolean isMonotonic(int[] A) {
         if(A.length < 2)
             return true;
