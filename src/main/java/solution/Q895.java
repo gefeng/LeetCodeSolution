@@ -14,6 +14,10 @@ import java.util.Stack;
         url = "https://leetcode.com/problems/maximum-frequency-stack/"
 )
 public class Q895 {
+    /**
+     * Time:  O(N) amortized O(1) for push() and pop()
+     * Space: O(N)
+     * */
     HashMap<Integer, Integer> mapFreq;
     HashMap<Integer, Stack<Integer>> mapStack;
     int maxFreq;

@@ -15,6 +15,10 @@ import java.util.Set;
         url = "https://leetcode.com/problems/groups-of-special-equivalent-strings/"
 )
 public class Q893 {
+    /**
+     * Time:  O(N * L)
+     * Space: O(N * L)
+     * */
     public int numSpecialEquivGroups(String[] A) {
         Set<String> groups = new HashSet<>();
         for(String s : A) {
