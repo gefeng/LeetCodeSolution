@@ -14,6 +14,10 @@ import java.util.Deque;
         url = "https://leetcode.com/problems/online-stock-span/"
 )
 public class Q901 {
+    /**
+     * Time:  O(N) amortized O(1) for next()
+     * Space: O(N)
+     * */
     private Deque<int[]> stack;
     public Q901() {
         stack = new ArrayDeque<>();
