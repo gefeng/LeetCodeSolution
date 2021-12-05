@@ -8,40 +8,44 @@ import java.util.*;
 
 @Problem(
         title = "Reconstruct Itinerary",
-        difficulty = QDifficulty.MEDIUM,
+        difficulty = QDifficulty.HARD,
         tag = QTag.GRAPH,
         url = "https://leetcode.com/problems/reconstruct-itinerary/"
 )
 public class Q332 {
+    /**
+     * Eulerian Path
+     *
+     * Time:  O(E * logE)
+     * Space: O(V + E)
+     * */
     public List<String> findItinerary(List<List<String>> tickets) {
-        HashMap<String, List<String>> graph = new HashMap<>();
-        buildGraph(tickets, graph);
+        List<String> path = new ArrayList<>();
+        Map<String, Queue<String>> g = new HashMap<>();
 
-        List<String> route = new LinkedList<>();
-        dfs(graph, "JFK", route);
+        for(List<String> t : tickets) {
+            String u = t.get(0);
+            String v = t.get(1);
 
-        return route;
-    }
-
-    private void buildGraph(List<List<String>> tickets, HashMap<String, List<String>> graph) {
-        for(List<String> ticket : tickets) {
-            String dep = ticket.get(0);
-            String arr = ticket.get(1);
-            if(!graph.containsKey(dep))
-                graph.put(dep, new LinkedList<>());
-            graph.get(dep).add(arr);
+            g.computeIfAbsent(u, k -> new PriorityQueue<>()).add(v);
         }
 
-        for(String key : graph.keySet())
-            Collections.sort(graph.get(key));
+        dfs(g, "JFK", path);
+        path.add("JFK");
+        Collections.reverse(path);
+
+        return path;
     }
 
-    private void dfs(HashMap<String, List<String>> graph, String airport, List<String> route) {
-        if(graph.containsKey(airport)) {
-            List<String> neighbors = graph.get(airport);
-            while(!neighbors.isEmpty())
-                dfs(graph, neighbors.remove(0), route);
+    private void dfs(Map<String, Queue<String>> g, String cur, List<String> path) {
+        Queue<String> pq = g.get(cur);
+
+        if(pq != null) {
+            while(!pq.isEmpty()) {
+                String nei = pq.poll();
+                dfs(g, nei, path);
+                path.add(nei);
+            }
         }
-        route.add(0, airport);
     }
 }
