@@ -14,6 +14,10 @@ import java.util.List;
         url = "https://leetcode.com/problems/spiral-matrix-iii/"
 )
 public class Q885 {
+    /**
+     * Time:  O(M * N)
+     * Space: O(M * N)
+     * */
     private static final int[][] DIRECTIONS = new int[][] {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
     public int[][] spiralMatrixIII(int R, int C, int r0, int c0) {
         int[][] visited = new int[R * C][2];
