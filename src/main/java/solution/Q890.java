@@ -15,6 +15,10 @@ import java.util.List;
         url = "https://leetcode.com/problems/find-and-replace-pattern/"
 )
 public class Q890 {
+    /**
+     * Time:  O(N * L)
+     * Space: O(N * L)
+     * */
     public List<String> findAndReplacePattern(String[] words, String pattern) {
         List<String> ans = new ArrayList<>();
 
