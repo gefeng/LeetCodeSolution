@@ -13,40 +13,45 @@ import enums.QTag;
 public class Q879 {
     /**
      * We can stop increasing profit once it reaches the requirement. This can limit the state to minimum profit.
+     * state:
+     *  (i, group_size, profit) # schemes on first i crimes with group size and profit
+     * base:
+     *  dp[0][0][0] = 1;
+     * transition:
+     *  (i, group_size, profit) -> (i + 1, group_size, profit)  if not pick ith crime
+     *  (i, group_size, profit) -> (i + 1, group_size + group[i], profit + profit[i]) if pick ith crime
      *
      * Time:  O(N ^ 3)
-     * Space: O(N ^ 3)
+     * Space: O(N ^ 2)
      * */
-    private final static int MOD = (int)1e9 + 7;
-    private int n;
-    private int minProfit;
-    private int[] group;
-    private int[] profit;
+    private static final long MOD = (long)1e9 + 7;
     public int profitableSchemes(int n, int minProfit, int[] group, int[] profit) {
-        this.n = n;
-        this.minProfit = minProfit;
-        this.group = group;
-        this.profit = profit;
+        int m = group.length;
+        long[][] dp = new long[n + 1][minProfit + 1];
+        dp[0][0] = 1L;
 
-        return dfs(0, 0, 0, new Integer[group.length][n + 1][minProfit + 1]);
-    }
+        for(int i = 0; i < m; i++) {
+            long[][] ndp = new long[n + 1][minProfit + 1];
+            for(int j = 0; j <= n; j++) {
+                for(int k = 0; k <= minProfit; k++) {
+                    ndp[j][k] += dp[j][k];
+                    ndp[j][k] %= MOD;
 
-    private int dfs(int cur, int peo, int pro, Integer[][][] memo) {
-        if(cur == group.length) {
-            return pro == minProfit ? 1 : 0;
+                    if(j + group[i] <= n) {
+                        ndp[j + group[i]][Math.min(k + profit[i], minProfit)] += dp[j][k];
+                        ndp[j + group[i]][Math.min(k + profit[i], minProfit)] %= MOD;
+                    }
+                }
+            }
+            dp = ndp;
         }
 
-        if(memo[cur][peo][pro] != null) {
-            return memo[cur][peo][pro];
+        long ans = 0;
+        for(int i = 0; i <= n; i++) {
+            ans += dp[i][minProfit];
+            ans %= MOD;
         }
 
-        int cnt = 0;
-        cnt += dfs(cur + 1, peo, pro, memo);
-
-        if(peo + group[cur] <= n) {
-            cnt = (cnt + dfs(cur + 1, peo + group[cur], Math.min(pro + profit[cur], minProfit), memo)) % MOD;
-        }
-
-        return memo[cur][peo][pro] = cnt;
+        return (int)ans;
     }
 }
