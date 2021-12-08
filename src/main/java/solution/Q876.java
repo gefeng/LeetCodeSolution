@@ -12,6 +12,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/middle-of-the-linked-list/"
 )
 public class Q876 {
+    /**
+     * Time:  O(N)
+     * Space: O(1)
+     * */
     public ListNode middleNode(ListNode head) {
         ListNode slow = head;
         ListNode fast = head;
