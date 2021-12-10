@@ -12,6 +12,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/smallest-subtree-with-all-the-deepest-nodes/"
 )
 public class Q865 {
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     private class Info {
         TreeNode candidate;
         int depth;
