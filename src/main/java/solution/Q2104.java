@@ -4,6 +4,9 @@ import annotations.Problem;
 import enums.QDifficulty;
 import enums.QTag;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 @Problem(
         title = "Sum of Subarray Ranges",
         difficulty = QDifficulty.MEDIUM,
@@ -12,24 +15,52 @@ import enums.QTag;
 )
 public class Q2104 {
     /**
-     * Time:  O(N ^ 2)
-     * Space: O(1)
+     * O(N ^ 2) solution is trivial. Let's solve it in O(N) time.
+     * If I know,
+     * 1. the sum of the max elements of each subarray x.
+     * 2. the sum of the min elements of each subarray y.
+     * => ans = x - y
+     *
+     * we can use monotonic stack to calculate x and y
+     * 
+     * min sum
+     * 3 xxx 5 xxx  add 2
+     * i     j          k
+     * 0     4          8
+     * nums[j] * (j - i) + (k - j - 1)
+     * calculate sum while popping from stack.
+     *
+     * Time:  O(N)
+     * Space: O(N)
      * */
     public long subArrayRanges(int[] nums) {
         long sum = 0;
         int n = nums.length;
+        Deque<Integer> s1 = new ArrayDeque<>();
+        Deque<Integer> s2 = new ArrayDeque<>();
 
-
-        for(int i = 0; i < n; i++) {
-            int min = Integer.MAX_VALUE;
-            int max = Integer.MIN_VALUE;
-            for(int j = i; j < n; j++) {
-                min = Math.min(min, nums[j]);
-                max = Math.max(max, nums[j]);
-                sum += max - min;
+        long mins = 0;
+        for(int i = 0; i <= n; i++) {
+            while(!s1.isEmpty() && (i == n || nums[s1.peek()] >= nums[i])) {
+                int j = s1.pop();
+                int k = s1.isEmpty() ? -1 : s1.peek();
+                mins += (long)nums[j] * (j - k) * (i - j);
             }
+
+            s1.push(i);
         }
 
-        return sum;
+        long maxs = 0;
+        for(int i = 0; i <= n; i++) {
+            while(!s2.isEmpty() && (i == n || nums[s2.peek()] <= nums[i])) {
+                int j = s2.pop();
+                int k = s2.isEmpty() ? -1 : s2.peek();
+                maxs += (long)nums[j] * (j - k) * (i - j);
+            }
+
+            s2.push(i);
+        }
+
+        return maxs - mins;
     }
 }
