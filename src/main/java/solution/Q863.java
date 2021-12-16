@@ -19,6 +19,10 @@ public class Q863 {
     * Do a dfs to find and mark each node's parent
     * Do a bfs to find all nodes with distance K from target node
     * */
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     public List<Integer> distanceK(TreeNode root, TreeNode target, int K) {
         HashMap<TreeNode, TreeNode> map = new HashMap<>();
         dfsFindParent(root, null, map);

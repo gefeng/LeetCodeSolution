@@ -22,7 +22,7 @@ public class Q2104 {
      * => ans = x - y
      *
      * we can use monotonic stack to calculate x and y
-     * 
+     *
      * min sum
      * 3 xxx 5 xxx  add 2
      * i     j          k

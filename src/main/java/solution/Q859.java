@@ -11,6 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/buddy-strings/"
 )
 public class Q859 {
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     public boolean buddyStrings(String A, String B) {
         if(A.length() != B.length() || A.length() == 1 || B.length() == 1)
             return false;

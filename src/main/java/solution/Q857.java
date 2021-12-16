@@ -21,38 +21,32 @@ public class Q857 {
      * Space: O(N)
      * */
     public double mincostToHireWorkers(int[] quality, int[] wage, int k) {
-        double ans = Double.MAX_VALUE;
+        double ans = 0;
         int n = quality.length;
-        int[][] qw = new int[n][2];
+        int[][] p = new int[n][2];
 
         for(int i = 0; i < n; i++) {
-            qw[i][0] = quality[i];
-            qw[i][1] = wage[i];
+            p[i] = new int[] {wage[i], quality[i]};
         }
 
-        Arrays.sort(qw, Comparator.comparingDouble(a -> (double)a[1] / a[0]));
+        // sort array by WAGE PER QUALITY, the overall pay will determined by the max wage per quality.
+        Arrays.sort(p, Comparator.comparingDouble(a -> (double)a[0] / a[1]));
 
-        Queue<int[]> maxHeap = new PriorityQueue<>(Comparator.comparing(a -> a[0], Comparator.reverseOrder()));
-        int[] max = null;
-        int sum = 0;
+        // the worker with maximum quality has the highest pay, so remove him if group size reaches k.
+        Queue<Integer> pq = new PriorityQueue<>(Comparator.reverseOrder());
+        int sumq = 0;
         for(int i = 0; i < n; i++) {
-            maxHeap.offer(qw[i]);
-
-            sum += qw[i][0];
-
-            if(maxHeap.size() > k) {
-                int[] pre = maxHeap.poll();
-                if(pre != qw[i]) {
-                    max = qw[i];
-                }
-                sum -= pre[0];
+            int[] cur = p[i];
+            if(pq.size() == k) {
+                sumq -= pq.poll();
+                sumq += cur[1];
+                ans = Math.min(ans, sumq * ((double)cur[0] / cur[1]));
             } else {
-                max = qw[i];
+                sumq += cur[1];
+                ans = sumq * ((double)cur[0] / cur[1]);
             }
 
-            if(maxHeap.size() == k) {
-                ans = Math.min(ans, ((double)max[1] * sum) / max[0]);
-            }
+            pq.offer(cur[1]);
         }
 
         return ans;

@@ -14,51 +14,33 @@ import java.util.Deque;
         url = "https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/"
 )
 public class Q862 {
-    /*
-    * monotonic queue
-    * */
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     public int shortestSubarray(int[] nums, int k) {
-        return dequeSolution(nums, k);
-    }
-
-    private int dequeSolution(int[] nums, int k) {
         int n = nums.length;
-        int[] prefixSum = new int[n + 1];
-        for(int i = 1; i < n + 1; i++) {
-            prefixSum[i] = prefixSum[i - 1] + nums[i - 1];
+        int ans = n + 1;
+        long[] preSum = new long[n + 1];
+
+        for(int i = 1; i <= n; i++) {
+            preSum[i] = preSum[i - 1] + nums[i - 1];
         }
 
         Deque<Integer> deque = new ArrayDeque<>();
-        int minLen = n + 1;
-        for(int i = 0; i < n + 1; i++) {
-            while(!deque.isEmpty() && prefixSum[deque.peekLast()] >= prefixSum[i]) {
-                deque.pollLast();
+        deque.offerLast(0);
+        for(int i = 1; i <= n; i++) {
+            while(!deque.isEmpty() && preSum[i] - preSum[deque.peekFirst()] >= k) {
+                ans = Math.min(ans, i - deque.pollFirst());
             }
 
-            while(!deque.isEmpty() && prefixSum[i] - prefixSum[deque.peekFirst()] >= k) {
-                minLen = Math.min(minLen, i - deque.pollFirst());
+            while(!deque.isEmpty() && preSum[i] <= preSum[deque.peekLast()]) {
+                deque.pollLast();
             }
 
             deque.offerLast(i);
         }
 
-        return minLen == n + 1 ? -1 : minLen;
-    }
-
-    private int bruteForce(int[] nums, int k) {
-        int n = nums.length;
-        int minLen = n + 1;
-        for(int i = 0; i < n; i++) {
-            int sum = 0;
-            for(int j = i; j < n; j++) {
-                sum += nums[j];
-                if(sum >= k) {
-                    minLen = Math.min(minLen, j - i + 1);
-                    break;
-                }
-            }
-        }
-
-        return minLen == n + 1 ? -1 : minLen;
+        return ans == n + 1 ? -1 : ans;
     }
 }
