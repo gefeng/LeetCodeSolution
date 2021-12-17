@@ -11,67 +11,36 @@ import enums.QTag;
         url = "https://leetcode.com/problems/backspace-string-compare/"
 )
 public class Q844 {
+    /**
+     * Time:  O(N)
+     * Space: O(1)
+     * */
     public boolean backspaceCompare(String s, String t) {
-        return removeBackspace(s).equals(removeBackspace(t));
-    }
+        int m = s.length();
+        int n = t.length();
 
-    private String removeBackspace(String s) {
-        StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if(c == '#') {
-                if(sb.length() != 0) {
-                    sb.deleteCharAt(sb.length() - 1);
-                }
-            } else {
-                sb.append(c);
-            }
-        }
-
-        return sb.toString();
-    }
-
-    private boolean constantSpaceSolution(String s, String t) {
-        int i = s.length() - 1;
-        int j = t.length() - 1;
-        int skipS = 0;
-        int skipT = 0;
-
-        while(i >= 0 || j >= 0) {
-            if(i < 0) {
-                return skipT > j;
-            }
-            if(j < 0) {
-                return skipS > i;
-            }
-
-            char cs = s.charAt(i);
-            char ct = t.charAt(j);
-
-            if(cs != '#' && ct != '#') {
-                if(cs != ct) {
-                    return false;
-                }
+        int i = m - 1;
+        int j = n - 1;
+        int cnt1 = 0;
+        int cnt2 = 0;
+        while(true) {
+            while(i >= 0 && (s.charAt(i) == '#' || cnt1 > 0)) {
+                if(s.charAt(i) == '#') cnt1++;
+                else cnt1--;
                 i--;
+            }
+
+            while(j >= 0 && (t.charAt(j) == '#' || cnt2 > 0)) {
+                if(t.charAt(j) == '#') cnt2++;
+                else cnt2--;
                 j--;
             }
 
-            if(cs == '#') {
-                skipS++;
-                i--;
-            } else {
-                i -= skipS;
-                skipS = 0;
-            }
-            if(ct == '#') {
-                skipT++;
-                j--;
-            } else {
-                j -= skipT;
-                skipT = 0;
-            }
+            if(i < 0 && j < 0) return true;
+            if(i < 0 || j < 0) return false;
+            if(s.charAt(i) != t.charAt(j)) return false;
+            i--;
+            j--;
         }
-
-        return true;
     }
 }
