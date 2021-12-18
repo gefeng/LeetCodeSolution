@@ -4,10 +4,7 @@ import annotations.Problem;
 import enums.QDifficulty;
 import enums.QTag;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.Stack;
+import java.util.*;
 
 @Problem(
         title = "Keys and Rooms",
@@ -16,28 +13,35 @@ import java.util.Stack;
         url = "https://leetcode.com/problems/keys-and-rooms/"
 )
 public class Q841 {
-    private void dfs(List<List<Integer>> rooms, Set<Integer> visited, int curr) {
-        if(visited.contains(curr))
-            return;
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
+    class Solution {
+        public boolean canVisitAllRooms(List<List<Integer>> rooms) {
+            int n = rooms.size();
 
-        visited.add(curr);
+            Set<Integer> keys = new HashSet<>();
+            Set<Integer> visited = new HashSet<>();
 
-        for(int room : rooms.get(curr)) {
-            dfs(rooms, visited, room);
-        }
-    }
-    public boolean canVisitAllRooms(List<List<Integer>> rooms) {
-        HashSet<Integer> visited = new HashSet<>();
-        Stack<Integer> stack = new Stack<>();
-        stack.push(0);
-        while(!stack.isEmpty()) {
-            int curr = stack.pop();
-            if(!visited.contains(curr)) {
-                visited.add(curr);
-                for(int room : rooms.get(curr))
-                    stack.push(room);
+            Queue<Integer> q = new ArrayDeque<>();
+            q.offer(0);
+            visited.add(0);
+            while(!q.isEmpty()) {
+                int sz = q.size();
+                for(int i = 0; i < sz; i++) {
+                    int key = q.poll();
+
+                    for(int k : rooms.get(key)) {
+                        if(!visited.contains(k)) {
+                            q.offer(k);
+                            visited.add(k);
+                        }
+                    }
+                }
             }
+
+            return visited.size() == n;
         }
-        return visited.size() == rooms.size();
     }
 }

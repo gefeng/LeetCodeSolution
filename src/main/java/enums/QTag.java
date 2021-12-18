@@ -48,4 +48,5 @@ public enum QTag {
     ENUMERATION,
     SIMULATION,
     MONOTONIC_STACK,
+    INTERACTIVE,
 }
