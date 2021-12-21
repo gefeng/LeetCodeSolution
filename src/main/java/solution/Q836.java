@@ -11,6 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/rectangle-overlap/"
 )
 public class Q836 {
+    /**
+     * Time:  O(1)
+     * Space: O(1)
+     * */
     public boolean isRectangleOverlap(int[] rec1, int[] rec2) {
         int[] px1 = new int[] { rec1[0], rec1[2] };
         int[] px2 = new int[] { rec2[0], rec2[2] };
