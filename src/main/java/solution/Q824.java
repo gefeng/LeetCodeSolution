@@ -14,6 +14,10 @@ import java.util.Set;
         url = "https://leetcode.com/problems/goat-latin"
 )
 public class Q824 {
+    /**
+     * Time:  O(M * N ^ 2)
+     * Space: O(M * N)
+     * */
     public String toGoatLatin(String S) {
         StringBuilder ans = new StringBuilder();
         StringBuilder suffixA = new StringBuilder();

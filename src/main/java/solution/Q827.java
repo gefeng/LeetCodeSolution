@@ -19,61 +19,23 @@ public class Q827 {
      * Time:  O(N * N)
      * Space: O(N * N)
      * */
-    private class DSU {
-        private int[] parent;
-        private int[] weight;
-        DSU(int n) {
-            parent = new int[n];
-            weight = new int[n];
-
-            for(int i = 0; i < n; i++) {
-                parent[i] = i;
-            }
-
-            Arrays.fill(weight, 1);
-        }
-
-        int find(int i) {
-            if(parent[i] != i) {
-                parent[i] = find(parent[i]);
-            }
-            return parent[i];
-        }
-
-        void union(int i, int j) {
-            int x = find(i);
-            int y = find(j);
-            if(x == y) {
-                return;
-            }
-
-            if(weight[x] == weight[y]) {
-                parent[y] = x;
-                weight[x] += weight[y];
-            } else if(weight[x] > weight[y]) {
-                parent[y] = x;
-                weight[x] += weight[y];
-            } else {
-                parent[x] = y;
-                weight[y] += weight[x];
-            }
-        }
-
-        int getChildren(int i) {
-            return weight[i];
-        }
-    }
     private static final int[][] DIRECTIONS = new int[][] {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
     public int largestIsland(int[][] grid) {
+        int ans = 0;
         int n = grid.length;
-        int res = 0;
-        DSU dsu = new DSU(n * n);
+        DJSet djs = new DJSet(n * n + n + 1);
 
-        boolean[][] visited = new boolean[n][n];
         for(int i = 0; i < n; i++) {
             for(int j = 0; j < n; j++) {
-                if(grid[i][j] == 1 && !visited[i][j]) {
-                    dfs(grid, i, j, dsu, visited);
+                if(grid[i][j] == 1) {
+                    for(int[] dir : DIRECTIONS) {
+                        int nr = i + dir[0];
+                        int nc = j + dir[1];
+                        if(nr >= 0 && nc >= 0 && nr < n && nc < n && grid[nr][nc] == 1) {
+                            djs.union(i * n + j, nr * n + nc);
+                        }
+                    }
+                    ans = Math.max(ans, djs.size(i * n + j));
                 }
             }
         }
@@ -81,39 +43,59 @@ public class Q827 {
         for(int i = 0; i < n; i++) {
             for(int j = 0; j < n; j++) {
                 if(grid[i][j] == 0) {
-                    Set<Integer> islands = new HashSet<>();
+                    int area = 1;
+                    Set<Integer> groups = new HashSet<>();
                     for(int[] dir : DIRECTIONS) {
                         int nr = i + dir[0];
                         int nc = j + dir[1];
                         if(nr >= 0 && nc >= 0 && nr < n && nc < n && grid[nr][nc] == 1) {
-                            islands.add(dsu.find(nr * n + nc));
+                            groups.add(djs.find(nr * n + nc));
                         }
                     }
 
-                    int area = 1;
-                    for(int island : islands) {
-                        area += dsu.getChildren(island);
+                    for(int g : groups) {
+                        area += djs.size(g);
                     }
-                    res = Math.max(res, area);
+
+                    ans = Math.max(area, ans);
                 }
             }
         }
 
-        return res == 0 ? n * n : res;
+        return ans;
     }
 
-    private void dfs(int[][] grid, int r, int c, DSU dsu, boolean[][] visited) {
-        int n = grid.length;
+    private class DJSet {
+        int[] p;
+        int[] w;
+        DJSet(int n) {
+            p = new int[n];
+            w = new int[n];
+            Arrays.fill(p, -1);
+            Arrays.fill(w, 1);
+        }
 
-        visited[r][c] = true;
+        int find(int i) {
+            if(p[i] < 0) return i;
+            return p[i] = find(p[i]);
+        }
 
-        for(int[] dir : DIRECTIONS) {
-            int nr = r + dir[0];
-            int nc = c + dir[1];
-            if(nr >= 0 && nc >= 0 && nr < n && nc < n && grid[nr][nc] == 1 && !visited[nr][nc]) {
-                dsu.union(r * n + c , nr * n + nc);
-                dfs(grid, nr, nc, dsu, visited);
+        void union(int i, int j) {
+            int x = find(i);
+            int y = find(j);
+            if(x == y) return;
+
+            if(w[x] >= w[y]) {
+                p[y] = x;
+                w[x] += w[y];
+            } else {
+                p[x] = y;
+                w[y] += w[x];
             }
+        }
+
+        int size(int i) {
+            return w[find(i)];
         }
     }
 }
