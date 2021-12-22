@@ -15,31 +15,28 @@ import java.util.List;
         url = "https://leetcode.com/problems/image-overlap/"
 )
 public class Q835 {
-    public int largestOverlap(int[][] A, int[][] B) {
-        int maxOverlap = 0;
-        int n = A.length;
-        List<int[]> posA = new ArrayList<>();
-        List<int[]> posB = new ArrayList<>();
-        HashMap<String, Integer> map = new HashMap<>();
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < n; j++) {
-                if(A[i][j] == 1)
-                    posA.add(new int[] {i, j});
-                if(B[i][j] == 1)
-                    posB.add(new int[] {i, j});
+    /**
+     * Time:  O(N ^ 4)
+     * Space: O(1)
+     * */
+    public int largestOverlap(int[][] img1, int[][] img2) {
+        int n = img1.length;
+        int ans = 0;
+        //-n + 1 - n - 1
+        for(int dx = -n + 1; dx <= n - 1; dx++) {
+            for(int dy = -n + 1; dy <= n - 1; dy++) {
+                int area = 0;
+                for(int i = 0; i < n; i++) {
+                    for(int j = 0; j < n; j++) {
+                        if(i + dx >= 0 && j + dy >= 0 && i + dx < n && j + dy < n && img1[i][j] == 1 && img2[i + dx][j + dy] == 1) {
+                            area++;
+                        }
+                    }
+                }
+                ans = Math.max(ans, area);
             }
         }
 
-        for(int[] pA : posA) {
-            for(int[] pB : posB) {
-                int offsetX = pA[0] - pB[0];
-                int offsetY = pA[1] - pB[1];
-                String key = offsetX + "-" + offsetY;
-                map.put(key, map.getOrDefault(key, 0) + 1);
-                maxOverlap = Math.max(maxOverlap, map.get(key));
-            }
-        }
-
-        return maxOverlap;
+        return ans;
     }
 }
