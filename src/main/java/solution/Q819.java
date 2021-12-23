@@ -6,6 +6,8 @@ import enums.QTag;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 @Problem(
         title = "Most Common Word",
@@ -14,36 +16,35 @@ import java.util.HashSet;
         url = "https://leetcode.com/problems/most-common-word/"
 )
 public class Q819 {
+    /**
+     * Time:  O(M + N)
+     * Space: O(M + N)
+     * */
     public String mostCommonWord(String paragraph, String[] banned) {
-        HashMap<String, Integer> wordMap = new HashMap<>();
-        HashSet<String> bannedSet = new HashSet();
-        StringBuilder wb = new StringBuilder();
+        paragraph = paragraph.toLowerCase().replaceAll("[!?',;.]", " ");
+        String[] arr = paragraph.split("\\s+");
+        Set<String> ban = new HashSet<>();
 
-        for(String s : banned) bannedSet.add(s);
+        for(String s : banned) ban.add(s);
 
-        for(int i = 0; i < paragraph.length(); i++) {
-            if(isLetter(paragraph.charAt(i))) {
-                wb.append(paragraph.charAt(i));
-                if(i == paragraph.length() - 1 || !isLetter(paragraph.charAt(i+1))) {
-                    String word = wb.toString().toLowerCase();
-                    if(!bannedSet.contains(word))
-                        wordMap.put(word, wordMap.getOrDefault(word, 0) + 1);
-                    wb = new StringBuilder();
-                }
+        Map<String, Integer> fMap = new HashMap<>();
+        for(String s : arr) {
+            if(!Character.isLetter(s.charAt(s.length() - 1))) {
+                s = s.substring(0, s.length() - 1);
+            }
+            fMap.put(s, fMap.getOrDefault(s, 0) + 1);
+        }
+
+        String ans = "";
+        int max = 0;
+        for(String k : fMap.keySet()) {
+            int f = fMap.get(k);
+            if(!ban.contains(k) && f > max) {
+                max = f;
+                ans = k;
             }
         }
 
-        int freq = 0;
-        String mcWord = "";
-        for(String key : wordMap.keySet()) {
-            if(wordMap.get(key) > freq) {
-                freq = wordMap.get(key);
-                mcWord = key;
-            }
-        }
-        return mcWord;
-    }
-    private boolean isLetter(char c) {
-        return (c - 'a' >= 0 && c - 'z' <= 0) || (c - 'A' >= 0 && c - 'Z' <= 0);
+        return ans;
     }
 }

@@ -14,56 +14,62 @@ import java.util.List;
         url = "https://leetcode.com/problems/ambiguous-coordinates/"
 )
 public class Q816 {
-    /*
-    * split to 2 parts will be easier to construct
-    * */
+    /**
+     * Time:  O(N ^ 3)
+     * Space: O(N ^ 2)
+     * */
     public List<String> ambiguousCoordinates(String s) {
-        int n = s.length();
         List<String> ans = new ArrayList<>();
+        s = s.substring(1, s.length() - 1);
+        int n = s.length();
 
-        for(int cut = 2; cut < n - 1; cut++) {
-            String x = s.substring(1, cut);     // O(n)
-            String y = s.substring(cut, n - 1); // O(n)
-            make(x, y, ans);                    // O(n^3)
+        for(int i = 0; i < n; i++) {
+            List<String> l = solve(s.substring(0, i + 1));
+            List<String> r = solve(s.substring(i + 1, n));
+
+            if(l.isEmpty() || r.isEmpty()) continue;
+
+            for(String s1 : l) {
+                for(String s2 : r) {
+                    ans.add("(" + s1 + ", " + s2 + ")");
+                }
+            }
         }
 
         return ans;
     }
 
-    private void make(String s1, String s2, List<String> ans) {
-        int m = s1.length();
-        int n = s2.length();
-        for(int i = 0; i < m; i++) {
-            StringBuilder xb = new StringBuilder(s1.substring(0, i)).append(i == 0 ? "" : ".").append(s1, i, m);
-            if(!valid(xb)) {
-                continue;
-            }
-            for(int j = 0; j < n; j++) {
-                StringBuilder yb = new StringBuilder(s2.substring(0, j)).append(j == 0 ? "" : ".").append(s2, j, n);
-                if(!valid(yb)) {
-                    continue;
-                }
+    private List<String> solve(String s) {
+        int n = s.length();
+        List<String> ret = new ArrayList<>();
+        if(n == 0) return ret;
 
-                StringBuilder coord = new StringBuilder("(").append(xb).append(", ").append(yb).append(")");
-                ans.add(coord.toString());
+        for(int i = 0; i < n; i++) {
+            String l = s.substring(0, i + 1);
+            String r = s.substring(i + 1, n);
+
+            if(r.isEmpty()) {
+                if(isValidInteger(l)) ret.add(l);
+            } else {
+                if(isValidInteger(l) && isValidFraction(r)) {
+                    ret.add(l + "." + r);
+                }
             }
         }
+
+        return ret;
     }
 
-    private boolean valid(StringBuilder s) {
+    private boolean isValidInteger(String s) {
         int n = s.length();
-        if(n == 1) {
-            return true;
-        }
 
-        int dot = s.indexOf(".");
-        if(s.charAt(0) == '0' && dot != 1) {
-            return false;
-        }
-        if(dot > 0 && s.charAt(n - 1) == '0') {
-            return false;
-        }
+        if(s.charAt(0) == '0' && n > 1) return false;
+        return true;
+    }
 
+    private boolean isValidFraction(String s) {
+        int n = s.length();
+        if(s.charAt(n - 1) == '0') return false;
         return true;
     }
 }
