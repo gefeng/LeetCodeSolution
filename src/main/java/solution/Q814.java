@@ -12,6 +12,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/binary-tree-pruning/"
 )
 public class Q814 {
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     public TreeNode pruneTree(TreeNode root) {
         if(root == null) {
             return null;
