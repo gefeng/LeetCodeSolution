@@ -14,6 +14,10 @@ import java.util.Set;
         url = "https://leetcode.com/problems/unique-morse-code-words/"
 )
 public class Q804 {
+    /**
+     * Time:  O(N * L)
+     * Space: O(N * L)
+     * */
     public int uniqueMorseRepresentations(String[] words) {
         String[] codeSet = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.",
                 "...","-","..-","...-",".--","-..-","-.--","--.."};
