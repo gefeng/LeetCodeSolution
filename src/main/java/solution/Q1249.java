@@ -4,9 +4,7 @@ import annotations.Problem;
 import enums.QDifficulty;
 import enums.QTag;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Stack;
+import java.util.*;
 
 @Problem(
         title = "Minimum Remove to Make Valid Parentheses",
@@ -20,31 +18,28 @@ public class Q1249 {
      * Space: O(N)
      * */
     public String minRemoveToMakeValid(String s) {
-        Stack<Integer> stack = new Stack<>();
-        Set<Integer> toRemove = new HashSet<>();
-        for(int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if(c == '(')
+        int n = s.length();
+        Deque<Integer> stack = new ArrayDeque<>();
+
+        for(int i = 0; i < n; i++) {
+            if(s.charAt(i) == '(') {
                 stack.push(i);
-            else if(c == ')') {
-                if(stack.isEmpty())
-                    toRemove.add(i);
-                else
-                    stack.pop();
+            } else if(s.charAt(i) == ')') {
+                if(!stack.isEmpty() && s.charAt(stack.peek()) == '(') stack.pop();
+                else stack.push(i);
             }
         }
 
-        while(!stack.isEmpty())
-            toRemove.add(stack.pop());
-
-        if(toRemove.isEmpty())
-            return s;
+        Set<Integer> remove = new HashSet<>();
+        while(!stack.isEmpty()) {
+            remove.add(stack.pop());
+        }
 
         StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < s.length(); i++) {
-            if(toRemove.contains(i))
-                continue;
-            sb.append(s.charAt(i));
+        for(int i = 0; i < n; i++) {
+            if(!remove.contains(i)) {
+                sb.append(s.charAt(i));
+            }
         }
 
         return sb.toString();

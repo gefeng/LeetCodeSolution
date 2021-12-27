@@ -15,6 +15,10 @@ import java.util.Stack;
         url = "https://leetcode.com/problems/generate-parentheses/"
 )
 public class Q22 {
+    /**
+     * Time:  O(2 ^ N * N)
+     * Space: O(2 ^ N * N)
+     * */
     List<String> ans = new ArrayList<>();
     StringBuilder sb = new StringBuilder();
 

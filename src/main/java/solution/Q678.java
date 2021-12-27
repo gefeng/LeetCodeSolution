@@ -14,38 +14,37 @@ import java.util.Deque;
         url = "https://leetcode.com/problems/valid-parenthesis-string/"
 )
 public class Q678 {
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     public boolean checkValidString(String s) {
-        return stackSolution(s);
-    }
+        int n = s.length();
+        Deque<Integer> stack1 = new ArrayDeque<>();
+        Deque<Integer> stack2 = new ArrayDeque<>();
 
-    private boolean stackSolution(String s) {
-        Deque<Integer> pStack = new ArrayDeque<>();
-        Deque<Integer> sStack = new ArrayDeque<>();
-
-        for(int i = 0; i < s.length(); i++) {
+        for(int i = 0; i < n; i++) {
             char c = s.charAt(i);
-            if(c == '*') {
-                sStack.push(i);
-            } else if(c == '(') {
-                pStack.push(i);
+            if(c == '(') {
+                stack1.push(i);
             } else if(c == ')') {
-                if(pStack.isEmpty() && sStack.isEmpty()) {
-                    return false;
-                }
-
-                if(!pStack.isEmpty()) {
-                    pStack.pop();
-                } else {
-                    sStack.pop();
-                }
+                if(!stack1.isEmpty()) stack1.pop();
+                else if(!stack2.isEmpty()) stack2.pop();
+                else return false;
+            } else {
+                stack2.push(i);
             }
         }
 
-        while(!pStack.isEmpty() && !sStack.isEmpty() && pStack.peek() < sStack.peek()) {
-            pStack.pop();
-            sStack.pop();
+        while(!stack1.isEmpty()) {
+            if(!stack2.isEmpty() && stack2.peek() > stack1.peek()) {
+                stack1.pop();
+                stack2.pop();
+            } else {
+                return false;
+            }
         }
 
-        return pStack.isEmpty();
+        return true;
     }
 }
