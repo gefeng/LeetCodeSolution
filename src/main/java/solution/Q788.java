@@ -6,11 +6,15 @@ import enums.QTag;
 
 @Problem(
         title = "Rotated Digits",
-        difficulty = QDifficulty.EASY,
+        difficulty = QDifficulty.MEDIUM,
         tag = QTag.STRING,
         url = "https://leetcode.com/problems/rotated-digits/"
 )
 public class Q788 {
+    /**
+     * Time:  O(N * logN)
+     * Space: O(1)
+     * */
     public int rotatedDigits(int N) {
         int count = 0;
         for(int i = 1; i <= N; i++) {

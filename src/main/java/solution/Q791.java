@@ -11,9 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/custom-sort-string/"
 )
 public class Q791 {
-    /*
-    * Counting sort
-    * */
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     public String customSortString(String S, String T) {
         int[] count = new int[26];
         for(int i = 0; i < T.length(); i++) {
