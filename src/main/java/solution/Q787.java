@@ -13,6 +13,10 @@ import java.util.*;
         url = "https://leetcode.com/problems/cheapest-flights-within-k-stops/"
 )
 public class Q787 {
+    /**
+     * Time:  O(E * logV)
+     * Space: O(E + V)
+     * */
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int K) {
         return dijkstraSolution(n, flights, src, dst, K);
     }

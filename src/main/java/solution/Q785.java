@@ -11,6 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/is-graph-bipartite/"
 )
 public class Q785 {
+    /**
+     * Time:  O(E + V)
+     * Space: O(V)
+     * */
     public boolean isBipartite(int[][] graph) {
         int n = graph.length;
         int[] colors = new int[n]; // 1:red, 2:blue
