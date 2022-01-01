@@ -12,6 +12,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/minimum-distance-between-bst-nodes/"
 )
 public class Q783 {
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     private int min;
     private TreeNode prev;
     private void inorder(TreeNode root) {
