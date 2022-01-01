@@ -15,12 +15,10 @@ import java.util.Queue;
         url = "https://leetcode.com/problems/swim-in-rising-water/"
 )
 public class Q778 {
-    /*
-        Intuition
-        what does matter is the maximum elevation in the path.
-        The problem can be tranlated to find a path to [n - 1, n - 1]
-        and minimize the maximum elevation along the path.
-    */
+    /**
+     * Time:  O(N ^ 2 * log(N ^ 2))
+     * Space: O(N ^ 2)
+     * */
     private static final int[][] DIRECTIONS = new int[][] {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
     public int swimInWater(int[][] grid) {
         int n = grid.length;
