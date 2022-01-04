@@ -4,6 +4,8 @@ import annotations.Problem;
 import enums.QDifficulty;
 import enums.QTag;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Stack;
 
 @Problem(
@@ -13,37 +15,68 @@ import java.util.Stack;
         url = "https://leetcode.com/problems/basic-calculator/"
 )
 public class Q224 {
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     public int calculate(String s) {
-        Stack<Integer> stack = new Stack<>();
-        int res = 0;
-        int currNum = 0;
-        int currSign = 1;
-        for(int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if(c == ' ')
-                continue;
-            if(Character.isDigit(c))
-                currNum = currNum * 10 + c - '0';
-            else if(c == '+' || c == '-') {
-                res += (currNum * currSign);
-                currNum = 0;
-                currSign = c == '+' ? 1 : -1;
-            } else if(c == '(') {
-                stack.push(res);
-                stack.push(currSign);
-                res = 0;
-                currSign = 1;
-            } else if(c == ')') {
-                res += (currNum * currSign);
-                res *= stack.pop(); // saved sign
-                res += stack.pop();
+        s = s.replaceAll(" ", "");
+        int n = s.length();
+        Deque<Integer> s1 = new ArrayDeque<>();
+        Deque<Character> s2 = new ArrayDeque<>();
 
-                currNum = 0;
-                currSign = 1;
+        for(int i = 0; i < n; i++) {
+            char c = s.charAt(i);
+
+            if(c == ' ') continue;
+
+            if(Character.isDigit(c)) {
+                int operand = 0;
+                while(i < n && Character.isDigit(s.charAt(i))) {
+                    operand = operand * 10 + s.charAt(i++) - '0';
+                }
+                s1.push(operand);
+                i--;
+            } else if(c == '(') {
+                s2.push(c);
+            } else if(c == ')') {
+                while(s2.peek() != '(') {
+                    cal(s1, s2);
+                }
+                s2.pop();
+            } else {
+                while(!s2.isEmpty() && s2.peek() != '(') {
+                    cal(s1, s2);
+                }
+
+                if(isUnary(s, c, i)) {
+                    s1.push(0);
+                }
+                s2.push(c);
             }
         }
 
-        res += (currNum * currSign);
-        return res;
+        while(!s2.isEmpty()) {
+            cal(s1, s2);
+        }
+
+        return s1.peek();
+    }
+
+    private void cal(Deque<Integer> s1, Deque<Character> s2) {
+        char op = s2.pop();
+        int y = s1.pop();
+        int x = s1.pop();
+        if(op == '+') s1.push(x + y);
+        else s1.push(x - y);
+    }
+
+    private boolean isUnary(String s, char c, int i) {
+        if(c != '-') return false;
+        if(i == 0) return true;
+        if(Character.isDigit(s.charAt(i - 1))) return false;
+        if(s.charAt(i - 1) == ')') return false;
+
+        return true;
     }
 }
