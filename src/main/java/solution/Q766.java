@@ -11,6 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/toeplitz-matrix/"
 )
 public class Q766 {
+    /**
+     * Time:  O(M * N)
+     * Space: O(M * N)
+     * */
     public boolean isToeplitzMatrix(int[][] matrix) {
         int m = matrix.length;
         int n = matrix[0].length;

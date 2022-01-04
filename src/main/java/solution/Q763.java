@@ -15,22 +15,30 @@ import java.util.List;
         url = "https://leetcode.com/problems/partition-labels/"
 )
 public class Q763 {
-    public List<Integer> partitionLabels(String S) {
+    /**
+     * Time:  O(N)
+     * Space: O(1)
+     * */
+    public List<Integer> partitionLabels(String s) {
         List<Integer> ans = new ArrayList<>();
+        int n = s.length();
+
         int[] last = new int[26];
-        Arrays.fill(last, -1);
-        for(int i = 0; i < S.length(); i++) {
-            last[S.charAt(i) - 'a'] = i;
+        for(int i = 0; i < n; i++) {
+            last[s.charAt(i) - 'a'] = i;
         }
 
-        int left = 0;
-        int right = 0;
-        for(int i = 0; i < S.length(); i++) {
-            right = Math.max(right, last[S.charAt(i) - 'a']);
-            if(i == right) {
-                ans.add(right - left + 1);
-                left = i + 1;
+        for(int i = 0; i < n; i++) {
+            int j = last[s.charAt(i) - 'a'];
+
+            for(int k = i + 1; k <= j; k++) {
+                if(last[s.charAt(k) - 'a'] > j) {
+                    j = last[s.charAt(k) - 'a'];
+                }
             }
+
+            ans.add(j - i + 1);
+            i = j;
         }
 
         return ans;
