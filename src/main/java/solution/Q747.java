@@ -11,6 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/largest-number-at-least-twice-of-others/"
 )
 public class Q747 {
+    /**
+     * Time:  O(N)
+     * Space: O(1)
+     * */
     public int dominantIndex(int[] nums) {
         if(nums.length == 1)
             return 0;

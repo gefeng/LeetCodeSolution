@@ -49,4 +49,5 @@ public enum QTag {
     SIMULATION,
     MONOTONIC_STACK,
     INTERACTIVE,
+    EULERIAN_CIRCUIT,
 }
