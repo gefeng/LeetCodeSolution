@@ -18,6 +18,10 @@ public class Q745 {
     * once required to search prefix = "ap" suffix = "e"
     * we can search "e-ap"
     * */
+    /**
+     * Time:  O(N * L ^ 2) for construction O(L) for query
+     * Space: O(N * L ^ 2)
+     * */
     private class TrieNode {
         TrieNode[] children;
         int lastIdx;
