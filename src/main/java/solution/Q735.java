@@ -14,6 +14,10 @@ import java.util.Deque;
         url = "https://leetcode.com/problems/asteroid-collision/"
 )
 public class Q735 {
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     public int[] asteroidCollision(int[] asteroids) {
         Deque<Integer> stack = new ArrayDeque<>();
 

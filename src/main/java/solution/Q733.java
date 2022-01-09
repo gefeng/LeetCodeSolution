@@ -14,6 +14,10 @@ import java.util.List;
         url = "https://leetcode.com/problems/flood-fill/"
 )
 public class Q733 {
+    /**
+     * Time:  O(M * N)
+     * Space: O(M * N)
+     * */
     private void shade(int[][] image, int row, int col, int targetColor, int newColor) {
         /*if(row < 0 || col < 0 || row > image.length - 1 || col > image[0].length - 1 || image[row][col] != targetColor)
             return;*/
