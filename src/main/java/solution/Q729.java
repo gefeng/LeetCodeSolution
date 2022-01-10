@@ -13,6 +13,10 @@ import java.util.TreeMap;
         url = "https://leetcode.com/problems/my-calendar-i/"
 )
 public class Q729 {
+    /**
+     * Time:  O(logN)
+     * Space: O(N)
+     * */
     private TreeMap<Integer, Integer> events;
     public Q729() {
         events = new TreeMap();
