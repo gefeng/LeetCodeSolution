@@ -11,6 +11,10 @@ import enums.QTag;
         url = "https://leetcode.com/problems/string-compression/"
 )
 public class Q443 {
+    /**
+     * Time:  O(N)
+     * Space: O(1)
+     * */
     public int compress(char[] chars) {
         int write = 0;
         int count = 1;
