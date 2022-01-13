@@ -47,4 +47,34 @@ public class Q678 {
 
         return true;
     }
+
+    /**
+     * Save valid "balance" as a range.
+     * "balance" means unbalanced open brackets so far.
+     * a range [0, 3] means possible "balance" are 0, 1, 2, 3
+     * */
+    public boolean countingSol(String s) {
+        int cmin = 0;
+        int cmax = 0;
+        int n = s.length();
+
+        for(int i = 0; i < n; i++) {
+            char c = s.charAt(i);
+
+            if(c == '(') {
+                cmin++;
+                cmax++;
+            } else if(c == '*') {
+                cmax++;
+                cmin = Math.max(0, cmin - 1);
+            } else {
+                cmin = Math.max(0, cmin - 1);
+                cmax--;
+            }
+
+            if(cmax < 0) return false;
+        }
+
+        return cmin == 0;
+    }
 }
