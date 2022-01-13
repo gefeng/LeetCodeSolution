@@ -11,9 +11,6 @@ import enums.QTag;
         url = "https://leetcode.com/problems/number-of-longest-increasing-subsequence/"
 )
 public class Q673 {
-    /*
-    * 老子不想知道你妹的binary search解法，本宝宝不想知道！！！
-    * */
     public int findNumberOfLIS(int[] nums) {
         return dpSolution(nums);
     }
