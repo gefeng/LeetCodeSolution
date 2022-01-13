@@ -5,7 +5,9 @@ import enums.QDifficulty;
 import enums.QTag;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
+import java.util.List;
 
 @Problem(
         title = "Baseball Game",
@@ -14,30 +16,27 @@ import java.util.Deque;
         url = "https://leetcode.com/problems/baseball-game/"
 )
 public class Q682 {
+    /**
+     * Time:  O(N)
+     * Space: O(N)
+     * */
     public int calPoints(String[] ops) {
-        Deque<Integer> stack = new ArrayDeque<>();
-        int sum = 0;
-        int n = ops.length;
-
-        for(int i = 0; i < n; i++) {
-            String s = ops[i];
-            if(s.equals("C")) {
-                stack.pop();
+        List<Integer> l = new ArrayList<>();
+        for(String s : ops) {
+            if(s.equals("+")) {
+                l.add(l.get(l.size() - 1) + l.get(l.size() - 2));
             } else if(s.equals("D")) {
-                stack.push(stack.peek() * 2);
-            } else if(s.equals("+")) {
-                int prev = stack.pop();
-                int curr = stack.peek() + prev;
-                stack.push(prev);
-                stack.push(curr);
+                l.add(l.get(l.size() - 1) * 2);
+            } else if(s.equals("C")) {
+                l.remove(l.size() - 1);
             } else {
-                stack.push(Integer.parseInt(s));
+                l.add(Integer.parseInt(s));
             }
         }
 
-        while(!stack.isEmpty()) {
-            sum += stack.pop();
-        }
+        int sum = 0;
+        for(int x : l) sum += x;
+
         return sum;
     }
 }
