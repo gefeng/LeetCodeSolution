@@ -51,4 +51,43 @@ public class Q2116 {
 
         return cnt == 0;
     }
+
+    /**
+     * [cmin, cmax] denotes possible "balance so far"
+     * i.e. [0, 2] means,
+     * 0: It's totally balanced.
+     * 1: one unclosed open parentheses.
+     * 2: two unclosed open parentheses.
+     *
+     * if s[i] is locked "(" -> cmin++ & cmax++
+     * if s[i] is locked ")" -> cmin-- & cmax--
+     * if s[i] is unlocked   -> cmin-- (it can be a close) && cmax++ (it can be a open)
+     * */
+    public boolean countSol(String s, String locked) {
+        int n = s.length();
+        if(n % 2 != 0) return false;
+
+        int cmin = 0;
+        int cmax = 0;
+        for(int i = 0; i < n; i++) {
+            char c = s.charAt(i);
+
+            if(locked.charAt(i) == '0') {
+                cmin = Math.max(0, cmin - 1);
+                cmax++;
+            } else {
+                if(c == '(') {
+                    cmin++;
+                    cmax++;
+                } else {
+                    cmin = Math.max(0, cmin - 1);
+                    cmax--;
+                }
+            }
+
+            if(cmax < 0) return false;
+        }
+
+        return cmin == 0;
+    }
 }
