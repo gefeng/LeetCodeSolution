@@ -4,87 +4,78 @@ import annotations.Problem;
 import enums.QDifficulty;
 import enums.QTag;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.ArrayDeque;
+import java.util.Queue;
 
 @Problem(
         title = "Maximum Employees to Be Invited to a Meeting",
         difficulty = QDifficulty.HARD,
-        tag = QTag.GRAPH,
+        tag = QTag.TOPOLOGICAL_SORT,
         url = "https://leetcode.com/problems/maximum-employees-to-be-invited-to-a-meeting/"
 )
 public class Q2127 {
     /**
+     * We can solve this by only using topological sort.
+     * The trick is to save depth for each nodes during topological sort which helps to easily calculate
+     * 2 nodes cycles (a tie) + their longest arms.
+     *
      * Time:  O(N)
      * Space: O(N)
      * */
     public int maximumInvitations(int[] favorite) {
-        return Math.max(findCycle1(favorite), findCycle2(favorite));
-    }
-
-    private int findCycle1(int[] fav) {
-        int n = fav.length;
         int ans = 0;
-
+        int n = favorite.length;
+        int[] indegree = new int[n];
+        int[] depth = new int[n];  // save max depth for each node connects to cycle
         boolean[] visited = new boolean[n];
+
+        for(int i = 0; i < n; i++) {
+            indegree[favorite[i]]++;
+            depth[i] = 1;
+        }
+
+        Queue<int[]> q = new ArrayDeque<>();
+
+        for(int i = 0; i < n; i++) {
+            if(indegree[i] == 0) {
+                q.offer(new int[] {i, 1});
+            }
+        }
+
+        while(!q.isEmpty()) {
+            int[] cur = q.poll();
+            //System.out.println(cur[0]);
+            visited[cur[0]] = true;
+            depth[cur[0]] = Math.max(depth[cur[0]], cur[1]);
+
+            int nxt = favorite[cur[0]];
+            depth[nxt] = Math.max(depth[nxt], cur[1] + 1);
+
+            if(--indegree[nxt] == 0) {
+                q.offer(new int[] {nxt, cur[1] + 1});
+            }
+        }
+
+        int maxCycle = 0;
+        int sumTie = 0;
         for(int i = 0; i < n; i++) {
             if(visited[i]) continue;
 
-            List<Integer> l = new ArrayList<>();
-            int cur = i;
-            while(!visited[cur]) {
-                visited[cur] = true;
-                l.add(cur);
-                cur = fav[cur];
+            int j = i;
+            int len = 0;
+            while(!visited[j]) {
+                visited[j] = true;
+                j = favorite[j];
+                len++;
             }
 
-            for(int j = 0; j < l.size(); j++) {
-                if(l.get(j) == cur) {
-                    ans = Math.max(ans, l.size() - j);
-                }
-            }
-        }
-
-        return ans;
-    }
-
-    private int findCycle2(int[] fav) {
-        int n = fav.length;
-        int ans = 0;
-        List<Integer>[] g = new List[n];
-
-        for(int i = 0; i < n; i++) {
-            g[i] = new ArrayList<>();
-        }
-
-        for(int i = 0; i < n; i++) {
-            g[fav[i]].add(i);  // reverse
-        }
-
-        boolean[] visited = new boolean[n];
-        for(int i = 0; i < n; i++) {
-            if(visited[i]) continue;
-
-            if(fav[fav[i]] == i) {
-                int l = dfs(g, visited, i, fav[i]);
-                int r = dfs(g, visited, fav[i], i);
-                ans += l + r + 2;
+            if(len > 2) {
+                maxCycle = Math.max(maxCycle, len);
+            } else {
+                sumTie += depth[i] + depth[favorite[i]];
             }
         }
 
-        return ans;
-    }
-
-    private int dfs(List<Integer>[] g, boolean[] visited, int cur, int pair) {
-        visited[cur] = true;
-
-        int max = 0;
-        for(int nei : g[cur]) {
-            if(visited[nei] || nei == pair) continue;
-
-            max = Math.max(max, dfs(g, visited, nei, pair) + 1);
-        }
-
-        return max;
+        return Math.max(maxCycle, sumTie);
     }
 }
