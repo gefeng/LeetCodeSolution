@@ -23,6 +23,7 @@ public class Q2157 {
         int n = words.length;
         DJSet djs = new DJSet(n);
         Map<Integer, Integer> map = new HashMap<>();
+        Map<Integer, Integer> del = new HashMap<>();
 
         for(int i = 0; i < n; i++) {
             int mask = toMask(words[i]);
@@ -46,24 +47,17 @@ public class Q2157 {
                     }
                 }
 
-                // delete
+                // delete & replace
                 if((mask & (1 << j)) != 0) {
                     int nmask = mask ^ (1 << j);
                     if(map.containsKey(nmask)) {
                         djs.union(i, map.get(nmask));
                     }
-                }
 
-                if((mask & (1 << j)) != 0) {
-                    for(int k = 0; k < 26; k++) {
-                        if(k == j || (mask & (1 << k)) != 0) continue;
-
-                        int nmask = mask ^ (1 << j);
-                        nmask = nmask | (1 << k);
-
-                        if(map.containsKey(nmask)) {
-                            djs.union(i, map.get(nmask));
-                        }
+                    if(del.containsKey(nmask)) {
+                        djs.union(i, del.get(nmask));
+                    } else {
+                        del.put(nmask, i);
                     }
                 }
             }
