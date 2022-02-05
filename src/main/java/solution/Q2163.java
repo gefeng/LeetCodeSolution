@@ -23,54 +23,35 @@ public class Q2163 {
         long sum1 = 0L;
         long sum2 = 0L;
         Queue<Integer> pqL = new PriorityQueue<>(Comparator.reverseOrder());
+        Queue<Integer> pqR = new PriorityQueue<>();
 
-        HashMap<Integer, Integer> map1 = new HashMap<>();
-        TreeMap<Integer, Integer> map2 = new TreeMap<>();
-
-        for(int i = 0; i < n; i++) {
+        long[] prefix = new long[n + 1];
+        for(int i = 0, j = 0; i < 2 * n; i++) {
             sum1 += nums[i];
             pqL.offer(nums[i]);
-        }
 
-        for(int i = n; i < 3 * n; i++) {
-            int x = nums[i];
-            map2.put(x, map2.getOrDefault(x, 0) + 1);
-        }
-
-        for(int i = 0; i < n; i++) {
-            int max = map2.lastKey();
-            sum2 += max;
-            map1.put(max, map1.getOrDefault(max, 0) + 1);
-            removeFromMap(map2, max);
-        }
-
-        ans = sum1 - sum2;
-        for(int i = n; i < 2 * n; i++) {
-            int x = nums[i];
-            sum1 += x;
-            pqL.offer(x);
-            sum1 -= pqL.poll();
-
-            if(map1.containsKey(x)) {
-                removeFromMap(map1, x);
-                sum2 -= x;
-                int max = map2.lastKey();
-                sum2 += max;
-                map1.put(max, map1.getOrDefault(max, 0) + 1);
-                removeFromMap(map2, max);
-            } else {
-                removeFromMap(map2, x);
+            if(pqL.size() > n) {
+                sum1 -= pqL.poll();
             }
 
-            ans = Math.min(ans, sum1 - sum2);
+            if(pqL.size() == n) {
+                prefix[j++] = sum1;
+            }
+        }
+
+        for(int i = 3 * n - 1, j = n; i >= n; i--) {
+            sum2 += nums[i];
+            pqR.offer(nums[i]);
+
+            if(pqR.size() > n) {
+                sum2 -= pqR.poll();
+            }
+
+            if(pqR.size() == n) {
+                ans = Math.min(ans, prefix[j--] - sum2);
+            }
         }
 
         return ans;
-    }
-
-    private void removeFromMap(Map<Integer, Integer> map, int x) {
-        int f = map.get(x);
-        if(f == 1) map.remove(x);
-        else map.put(x, f - 1);
     }
 }
