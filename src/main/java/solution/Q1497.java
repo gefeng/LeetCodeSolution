@@ -13,8 +13,7 @@ import enums.QTag;
 public class Q1497 {
     /**
      * Modular operation indicates a implicit range from 0 inclusive to divisor k exclusive
-     *
-     * Time:  O(N)
+     *   * Time:  O(N)
      * Space: O(K)
      * */
     public boolean canArrange(int[] arr, int k) {
