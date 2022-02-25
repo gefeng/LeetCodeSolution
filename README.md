@@ -2,4 +2,6 @@
 
 DP
   Distinct Subsequence
-  1984. Number of Unique Good Subsequences
+    LC-115-Distinct Subsequences
+    LC-940-Distinct Subsequences II
+    LC-1984-Number of Unique Good Subsequences
