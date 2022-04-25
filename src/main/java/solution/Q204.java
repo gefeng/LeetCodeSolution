@@ -13,6 +13,9 @@ import java.util.Arrays;
         url = "https://leetcode.com/problems/count-primes/"
 )
 public class Q204 {
+    /**
+     * sieve
+     * */
     public int countPrimes(int n) {
         boolean[] isPrime = new boolean[n];
         Arrays.fill(isPrime, true);
